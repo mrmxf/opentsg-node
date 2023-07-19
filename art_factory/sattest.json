@@ -1,0 +1,11 @@
+{
+    "widget identifier": "ebu3373/saturation",
+    "colors": [
+        "red",
+        "green",
+        "blue"
+    ],
+    "grid": {
+        "location": "key:black"
+    }
+}

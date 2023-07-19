@@ -1,0 +1,27 @@
+[
+  {
+    "factory include": [
+      {
+        "include json path": "./000-text-empty.json",
+        "alias": "R1C1"
+      },      {
+        "include json path": "./000-text-empty.json",
+        "alias": "R1C2"
+      },
+      {
+          "include json path": "./000-text-empty.json",
+          "alias": "R1C3"
+        },      {
+          "include json path": "./000-text-empty.json",
+          "alias": "R1C4"
+        }
+      ]
+  },
+  {
+    "R1C1": {"text": ["A"], "grid":{"location":"A1"}},
+    "R1C2": {"text": ["B"], "grid":{"location":"B1"}},
+    "R1C3": {"text": ["C"], "grid":{"location":"C1"}},
+    "R1C4": {"text": ["D"],"grid":{"location":"D1"}}
+  }
+  
+]

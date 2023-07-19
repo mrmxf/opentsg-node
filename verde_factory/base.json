@@ -1,0 +1,16 @@
+{
+    "type":"builtin.canvasoptions",
+    "name": [
+        "./x/x{{framenumber}}.png"
+    ],
+    "frameSize": {
+        "w": 4096,
+        "h": 2160
+    },
+    "linewidth": 0.5,
+    "filedepth": 16,
+    "gridColumns" : 16,
+    "gridRows":9, 
+    "backgroundFillColor":"#FF0000" ,
+    "lineColor":"#00FF00"
+}

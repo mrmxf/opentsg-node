@@ -1,0 +1,18 @@
+[
+    {
+        "factory include": [
+            {
+                "include": "./w/000-bg-fat.json",
+                "alias": "realcanvas"
+            },
+  
+
+        {
+                "include": "./w/pyramids.json",
+                "alias": "R1"
+            }
+        ]
+    },
+    {
+    }
+]

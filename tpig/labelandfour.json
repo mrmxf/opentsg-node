@@ -1,0 +1,20 @@
+{
+    "include": [
+        {
+            "uri": "four.json",
+            "name": "four"
+        },
+        {
+            "uri": "labels.json",
+            "name": "label"
+        }
+    ],
+    "create": [
+        {
+            "four": {}
+        },
+        {
+            "label": {}
+        }
+    ]
+}

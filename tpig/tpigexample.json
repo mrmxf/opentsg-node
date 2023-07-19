@@ -1,0 +1,18 @@
+{
+    "include": [
+        {
+            "uri": "labelandfour.json",
+            "name": "labelandfour"
+        },
+        {
+            "uri": "baseTPIG.json",
+            "name": "canvas"
+        }
+    ],
+    "create": [
+        {
+            "canvas": {},
+            "labelandfour": {}
+        }
+    ]
+}

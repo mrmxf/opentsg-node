@@ -1,0 +1,26 @@
+{
+    "widget identifier": "ramps",
+    "minimum": 0,
+    "maximum": 4095,
+    "depth": 12,
+    "fillType": "fill",
+    "stripes": {
+        "ramps": {
+            "fill": "gradient",
+            "bitdepth": [
+                10,8,4
+            ],
+            "height": 1,
+            "rampGroups": {
+                "gray": {
+                    "color": "gray",
+                    "rampstart": 0,
+                    "direction": 1
+                }
+            }
+        }
+    },
+    "grid": {
+        "location": "key:yellow"
+    }
+}

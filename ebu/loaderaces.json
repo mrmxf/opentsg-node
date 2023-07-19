@@ -1,0 +1,36 @@
+
+  {
+    "include": [
+      {
+        "uri": "./ebu/bars.json",
+        "name": "bars"
+      },
+      {
+        "uri": "./ebu/sat.json",
+        "name": "saturation"
+      },
+      {
+        "uri": "./ebu/bace.json",
+        "name": "canvas"
+      },
+      {
+        "uri": "./ebu/twosi.json",
+        "name": "twosi"
+      },
+      {
+        "uri": "./ebu/nb.json",
+        "name": "black"
+      },
+      {
+        "uri": "./ebu/luma.json",
+        "name": "lum"
+      }
+    ]
+   , "create":[{
+    "canvas":{},
+    "bars":{},
+    "saturation":{},
+    "lum":{},
+    "black":{},
+    "twosi" :{}}]
+}

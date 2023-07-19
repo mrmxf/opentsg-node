@@ -1,0 +1,11 @@
+{
+    "type":"builtin.zoneplate",
+    "platetype": "sweep" ,
+    "angle" : "π*1/2",
+    "startcolor" : "white",
+    "mask":"circle",
+    "grid": {
+      "location": 
+        "q1:aa5" 
+    }
+}

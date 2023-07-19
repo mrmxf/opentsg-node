@@ -1,0 +1,11 @@
+{
+    "widget identifier": "zoneplate",
+    "platetype": "sweep" ,
+    "angle" : "π*1/2",
+    "startcolor" : "white",
+    "mask":"circle",
+    "grid": {
+      "location": 
+        "a7:b8" 
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "type": "builtin.fourcolor",
+    "colors" : ["#FF0000", "#00FF00", "#0000FF", "#00FFFF"],
+    "grid": {
+        "location": "A0:P15"
+    }
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "factory include": [
+      {
+        "include json path": "./w/000-headers.json",
+        "alias": "canvas"
+      },
+      {
+        "include json path": "./w/000-bg-fat.json",
+        "alias": "realcanvas"
+      },
+      {
+        "include json path": "./w/000-ramp-lhs.json",
+        "alias": "rl4"
+      }
+    ]
+  },
+  {
+  },
+  {
+    "canvas[0:2]": {"backgroundcolor": "#ffffffff"},
+    "canvas.R1C1": {"textcolor": "#ff0000"},
+    "canvas[0]": {"textcolor": "#0000ff"},
+    "canvas.R2.R1C1": {"textcolor": "#ff0000"},
+    "canvas[4][0:4]": {"backgroundcolor": "#ff00ff", "textcolor":"#000000"}
+  }
+]

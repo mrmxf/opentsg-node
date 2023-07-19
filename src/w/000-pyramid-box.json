@@ -1,0 +1,23 @@
+
+
+{
+
+    "type": "builtin.textbox",
+  
+    "text": [""],
+  
+    "font": "body",
+  
+    "textcolor": "#C2A649",
+  
+    "bordercolor": "#ff0000",
+  
+    "backgroundcolor": "rgb12(4095,0,0)",
+  
+    "bordersize": 0.1,
+  
+    "grid": { "location": "I0:J0", "alias": "bare_box" }
+  
+  }
+  
+  

@@ -1,0 +1,821 @@
+[
+  {
+    "factory include": [
+      {
+        "include json path": "./art_factory/robot.json",
+        "alias": "robocorner"
+      },
+      {
+        "include json path": "./verde_factory/qr.json",
+        "alias": "qr"
+      },
+      {
+        "include json path": "./art_factory/sattest.json",
+        "alias": "logo"
+      },
+      {
+        "include json path": "./art_factory/header.json",
+        "alias": "header"
+      },
+      {
+        "include json path": "./art_factory/base.json",
+        "alias": "canvas"
+      },
+      {
+        "include json path": "./art_factory/littleramp.json",
+        "alias": "moveramp"
+      },
+      {
+        "include json path": "./art_factory/barstest.json",
+        "alias": "noises"
+      },
+      {
+        "include json path": "./verde_factory/frame.json",
+        "alias": "count"
+      }
+    ]
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0000.png"
+      ]
+    },
+    "moveramp": {
+      "stripes": {
+        "ramps": {
+          "rampGroups": {
+            "gray": {
+              "rampstart": 2048
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0001.png",
+        "./x/x0001.csv"
+      ],
+      "frameSize": {
+        "w": 1920,
+        "h": 1080
+      }
+    },
+    "moveramp": {
+      "maximum": 2000,
+      "stripes": {
+        "ramps": {
+          "rampGroups": {
+            "gray": {
+              "color": "red",
+              "rampstart": 3000
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0002.png"
+      ],
+      "frameSize": {
+        "w": 1920,
+        "h": 1080
+      }
+    },
+    "moveramp": {
+      "stripes": {
+        "ramps": {
+          "maximum": 2000,
+          "rampGroups": {
+            "gray": {
+              "rampstart": 3000
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0003.png"
+      ]
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0004.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2266
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0005.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2321
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0006.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2375
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0007.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2430
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0008.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2484
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0009.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2539
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0010.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2594
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0011.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2648
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0012.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2703
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0013.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2757
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0014.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2812
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0015.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2867
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0016.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2921
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0017.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 2976
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0018.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3031
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0019.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3085
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0020.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3140
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0021.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3194
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0022.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3249
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0023.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3304
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0024.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3358
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0025.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3413
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0026.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3467
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0027.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3522
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0028.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3577
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0029.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3631
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0030.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3686
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0031.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3741
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0032.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3795
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0033.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3850
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0034.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3904
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0035.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 3959
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0036.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 4014
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0037.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 4068
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0038.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 28
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0039.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 82
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0040.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 137
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0041.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 192
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0042.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 246
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0043.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 301
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0044.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 355
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0045.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 410
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0046.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 465
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0047.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 519
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0048.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 574
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0049.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 629
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0050.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 683
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0051.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 738
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0052.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 792
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0053.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 847
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0054.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 902
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0055.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 956
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0056.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1011
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0057.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1065
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0058.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1120
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0059.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1175
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0060.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1229
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0061.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1284
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0062.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1339
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0063.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1393
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0064.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1448
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0065.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1502
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0066.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1557
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0067.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1612
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0068.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1666
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0069.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1721
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0070.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1775
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0071.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1830
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0072.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1885
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0073.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1939
+    }
+  },
+  {
+    "canvas": {
+      "name": [
+        "./x/x0074.png"
+      ]
+    },
+    "moveramp": {
+      "rampstart": 1994
+    }
+  }
+]

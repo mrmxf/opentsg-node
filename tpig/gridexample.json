@@ -1,0 +1,18 @@
+{
+    "include": [
+      {
+        "uri": "labelandfour.json",
+        "name": "labelandfour"
+      },
+      {
+        "uri": "baseGrid.json",
+        "name": "canvas"
+      }
+    ],
+    "create": [
+      {
+        "canvas": {},
+        "labelandfour": {}
+      }
+    ]
+  }

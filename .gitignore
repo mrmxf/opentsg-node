@@ -1,0 +1,38 @@
+msgtpg*
+_lamsgtsg*
+_lxamsgtsg*
+_winmsgtsg*
+
+clogrc/core
+.env
+
+recAssets/PixeloidSans-nR3g1.ttf
+
+verdefactoryarchive
+
+#ignore generated files
+**/*.png
+**/*.txt
+**/*.tiff
+**/*.7th
+**/*.mhl
+**/*.pem
+**/*.yaml
+**/*.jpg
+**/*.jpeg
+
+x/**
+ov/**
+
+#return the ones we want
+#!x/*.png
+!x/*.tiff
+!y/*.png
+!y/*.tiff
+!z/*.png
+!z/*.tiff
+!recAssets/*.png
+
+
+#ignore the entire s3 bucket
+mnt/

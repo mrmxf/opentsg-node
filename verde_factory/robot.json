@@ -1,0 +1,7 @@
+{
+    "type":"builtin.addimage",
+        "image": "../recAssets/mmib-bot-22-1000-16bit.png",
+        "grid": {
+            "location": "o0:p1"
+        }
+}

@@ -1,0 +1,9 @@
+{ "type":"builtin.addimage",
+    "image":
+    "./recAssets/mmic-mrmxf-1000-16bit.png",
+  "grid": {
+    "location":
+      "a0:b1"
+  },
+  "imageFill":"fill"
+}

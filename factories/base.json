@@ -1,0 +1,13 @@
+{
+    "widget identifier": "canvas options",
+    "name": [
+        "newhello.png"
+    ],
+    "frameSize": {
+        "w": 4096,
+        "h": 2160
+    },
+    "textcolor": "rgb(253,34,56)",
+    "linewidth": 0.5,
+    "filedepth": 16
+}
