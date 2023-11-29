@@ -41,6 +41,7 @@ issue=$(git status | grep 'working tree clean')
 [ -z "$issue" ] && printf "${cE}Changes!$cT Working tree must be$cS clean$cT before build$cX\n" && ((OOPS++))
 
 # --- tag handling ------------------------------------------------------------
+gBRANCH=$(git branch --show-current) && [[ "main" == "$gBRANCH" ]] && gBRANCH="${cE}$gBRANCH"
 vCODE=$(awk 'match($0, /"([^"]*)/) { print substr($0, RSTART+1, RLENGTH-1) }' ./versionstr/releases.yml | head -1)
 vREF="$vCODE"
 vLOCAL=$(git tag | tail -1)       && [ -z "$vLOCAL" ] && vLOCAL="$untagged"
@@ -58,6 +59,7 @@ vRwidgets=$( getRemoteTag opentsg-widgets ) ; OOPS=$?
 
 #print out the matching tags
 printf "${cC}golang$cT code           $cS $vCODE $cX\n"
+printf "${cT} local$cT git branch     $cT $gBRANCH $cX\n"
 printf "${cT} local$cT git latest     $cS $vLOCAL$cX\n"
 printf "${cT} local$cT git HEAD       $cS $vHEAD$cX\n"
 printf "${cS}github$cT opentsg-core   $cS $vRcore    $cX\n"
