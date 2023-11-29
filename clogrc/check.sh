@@ -57,15 +57,36 @@ vRnode=$(   getRemoteTag opentsg-node )   ; OOPS=$?
 vRwidgets=$( getRemoteTag opentsg-widgets ) ; OOPS=$?
 
 #print out the matching tags
-printf "golang code   $cS $vCODE $cX\n"
-printf "local  git latest     $cS $vLOCAL$cX\n"
-printf "local  git HEAD       $cS $vHEAD$cX\n"
-printf "remote opentsg-core   $cS $vRcore    $cX\n"
-printf "remote opentsg-io     $cS $vRio      $cX\n"
-printf "remote opentsg-lab    $cS $vRlab     $cX\n"
-printf "remote opentsg-mhl    $cS $vRmhl     $cX\n"
-printf "remote opentsg-node   $cS $vRnode    $cX\n"
-printf "remote opentsg-widgets$cS $vRwidgets $cX\n"
+printf "$cC  golang$cT code           $cS $vCODE $cX\n"
+printf "${cT} local$cT git latest     $cS $vLOCAL$cX\n"
+printf "${cT} local$cT git HEAD       $cS $vHEAD$cX\n"
+printf "${cH}github$cT opentsg-core   $cS $vRcore    $cX\n"
+printf "${cH}github$cT opentsg-io     $cS $vRio      $cX\n"
+printf "${cH}github$cT opentsg-lab    $cS $vRlab     $cX\n"
+printf "${cH}github$cT opentsg-mhl    $cS $vRmhl     $cX\n"
+printf "${cH}github$cT opentsg-node   $cS $vRnode    $cX\n"
+printf "${cH}github$cT opentsg-widgets$cS $vRwidgets $cX\n"
+
+# --- tag fixup ---------------------------------------------------------------
+
+if [[ "$vLOCAL" != "$vREF" ]] ; then
+  fPrompt "${cT}Tag$cS $PROJECT$cT locally @ $vREF?$cX" "yN" 6
+  if [ $? -eq 0 ] ; then # yes was selected
+    printf "Tagging local with $vREF.\n"
+    fTagLocal "$vREF" "matching tag to release ($vREF)"
+    [ $? -gt 0 ] && printf "${cE}Abort$cX\n" && exit 1
+    vLOCAL=$(git tag | tail -1)
+  fi
+fi
+
+if [[ ( "$vLOCAL" == "$vREF" ) && ( "$vRnode" != "$vREF" ) ]] ; then
+  fPrompt "${cT}Push$cS $PROJECT$cT to origin @ $vREF?$cX" "yN" 6
+  if [ $? -eq 0 ] ; then # yes was selected
+    printf "Pushing $vREF to origin.\n"
+    fTagRemote "$vREF"
+    [ $? -gt 0 ] && printf "${cE}Abort$cX\n" && exit 1
+  fi
+fi
 
 # --- environemnt variables ---------------------------------------------------
 
