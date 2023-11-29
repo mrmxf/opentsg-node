@@ -7,10 +7,10 @@
 #  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
 #        |_|                            |___/
 
-[ -f clogrc/common.sh ] && source clogrc/common.sh  # helper functions
+[ -f clogrc/common.sh ] && source clogrc/common.sh           # helper functions
 # -----------------------------------------------------------------------------
 
-source clogrc/check.sh  ignore                    # preflight - ignore warnings
+[ -f clogrc/check.sh ] && source clogrc/check.sh  ignore  # preflight - no warn
 printf "${cT}Project$cS $PROJECT$cX\n"
 
 # -----------------------------------------------------------------------------
@@ -19,9 +19,11 @@ printf "${cT}Project$cS $PROJECT$cX\n"
 fMachine
 fEcho "Build   on $cS${cOS}$cT with $cK${cPU}$cT architecture"
 
-# export the commit ID & today's date for the build
-ID=$(git rev-list -1 HEAD)
-DT=$(date +%F)
+# export the commit ID & date & type for the build
+CID=$(git rev-list -1 HEAD)
+DATE=$(date +%F)
+SemSfx="$( git branch --show-current )"
+[[ "main" == "$SemSfx" ]] && SemSfx=""
 
 
 # load in the arrays of variants & the EXE & EXElocal variables
@@ -37,8 +39,9 @@ for i in {1..$LEN}; do
   fInfo "Build   ${cVER[$i]}${FILE[$i]}${cT} ($OS for $CPU) with metadata"
   LDF=("-X main.LDos=$OS")
   LDF+="-X main.LDcpu=$CPU"
-  LDF+="-X main.LDcommit=$ID"
-  LDF+="-X main.LDdate=$DT"
+  LDF+="-X main.LDcommit=$CID"
+  LDF+="-X main.LDdate=$DATE"
+  LDF+="-X main.LDsuffix=$SemSfx"
   LDF+="-X main.LDappname=$APP"
   LDFLAGS=$(printf " %s" "${LDF[@]}") # make a long linker loader string
   GOOS=$OS GOARCH=$CPU go build -ldflags "$LDFLAGS" -o tmp/${FILE[$i]}

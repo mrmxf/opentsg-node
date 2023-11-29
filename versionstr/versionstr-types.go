@@ -37,6 +37,7 @@ type VersionInfo struct {
 	Date     string `json:"date"`
 	OS       string `json:"os"`
 	CPU      string `json:"cpu"`
+	Suffix   string `json:"semverSuffix"`
 	Short    string
 	Long     string
 	Note     string

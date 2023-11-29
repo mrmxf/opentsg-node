@@ -17,13 +17,13 @@ var LDos = "?os"
 var LDcpu = "?cpu"
 var LDcommit = "0123456789|- dummy-||- data -||-----xxxx"
 var LDdate = "noDate"
-
-const LDappname = "opentsg"
+var LDsuffix = ""
+var LDappname = "opentsg"
 
 // or change this all into the core repo?
 func main() {
 	start := time.Now()
-	err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname)
+	err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname, LDsuffix)
 	if err != nil {
 		panic(err)
 	}

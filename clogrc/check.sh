@@ -38,7 +38,7 @@ issue=$(git status | grep 'branch is ahead')
 [ -n "$issue" ]  && printf "${cE}Push$cT changes before build$cX\n" && ((OOPS++))
 
 issue=$(git status | grep 'working tree clean')
-[ -z "$issue" ] && printf "${cE}Changes!$cT Working Tree must be$cS clean$cT before build$cX\n" && ((OOPS++))
+[ -z "$issue" ] && printf "${cE}Changes!$cT Working tree must be$cS clean$cT before build$cX\n" && ((OOPS++))
 
 # --- tag handling ------------------------------------------------------------
 vCODE=$(awk 'match($0, /"([^"]*)/) { print substr($0, RSTART+1, RLENGTH-1) }' ./versionstr/releases.yml | head -1)
@@ -79,7 +79,7 @@ if [[ "$vLOCAL" != "$vREF" ]] ; then
   fi
 fi
 
-if [[ ( "$vLOCAL" == "$vREF" ) && ( "$vRnode" != "$vREF" ) ]] ; then
+if [[ ( "$vHEAD" == "$vREF" ) && ( "$vRnode" != "$vREF" ) ]] ; then
   fPrompt "${cT}Push$cS $PROJECT$cT to origin @ $vREF?$cX" "yN" 6
   if [ $? -eq 0 ] ; then # yes was selected
     printf "Pushing $vREF to origin.\n"

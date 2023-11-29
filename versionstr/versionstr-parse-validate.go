@@ -32,7 +32,7 @@ func getEmbeddedHistoryData() error {
 }
 
 // read the history and return the latest version string
-func cleanLinkerData(LDos string, LDcpu string, LDcommit string, LDdate string, LDappname string) error {
+func cleanLinkerData(LDos string, LDcpu string, LDcommit string, LDdate string, LDappname string, LDsuffix string) error {
 	if len(LDos) == 0 {
 		return errors.New("ldflags build OS string is empty - what OS are you bulding for?")
 	}
@@ -61,6 +61,10 @@ func cleanLinkerData(LDos string, LDcpu string, LDcommit string, LDdate string, 
 	Info.OS = LDos
 	Info.Date = LDdate
 	Info.CommitId = LDcommit
-
+	// semver suffix is v1.2.3+4fe2 or v1.2.3-rc.4fe2
+	Info.Suffix = "+" + Info.CommitId[:4]
+	if len(LDsuffix) > 0 {
+		Info.Suffix = "-" + LDsuffix + "." + Info.CommitId[:4]
+	}
 	return nil
 }
