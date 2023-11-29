@@ -1,7 +1,13 @@
-msgtpg*
-_lamsgtsg*
-_lxamsgtsg*
-_winmsgtsg*
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+#tmp files and folders
+tmp-*
+tmp/*
+!*/readme.md
+
+/*tsg-node
 
 clogrc/core
 .env
@@ -10,7 +16,7 @@ recAssets/PixeloidSans-nR3g1.ttf
 
 verdefactoryarchive
 
-#ignore generated files
+#ignore generated image files
 **/*.png
 **/*.txt
 **/*.tiff
@@ -24,15 +30,23 @@ verdefactoryarchive
 x/**
 ov/**
 
-#return the ones we want
+#restore images that we want
 #!x/*.png
-!x/*.tiff
-!y/*.png
-!y/*.tiff
-!z/*.png
-!z/*.tiff
-!recAssets/*.png
+# !x/*.tiff
+# !y/*.png
+# !y/*.tiff
+# !z/*.png
+# !z/*.tiff
+# !recAssets/*.png
 
-
-#ignore the entire s3 bucket
+#ignore any temporary mounted folders (linux)
 mnt/
+
+# Mac cruft
+.DS_Store
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Test binary, built with `go test -c`
+*.test

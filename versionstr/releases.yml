@@ -1,0 +1,21 @@
+# opentsg codenames from https://www.mythical-creatures-and-beasts.com/
+- version:	   "v0.4.0"
+  date:        2023-11-29
+  codename:    dragon
+  note:        color space & text
+- version:	   "v0.3.0"
+  date:        2023-09-01
+  codename:    camazotz
+  note:        internal testing release
+- version:	   "v0.2.1"
+  date:        2023-08-30
+  codename:    bunyip
+  note:        bug fixes and naming consistency
+- version:	   "v0.2.0"
+  date:        2023-07-21
+  codename:    bunyip
+  note:        first public repo for feedback
+- version:	   "v0.1.0"
+  date:        2023-04-28
+  codename:    aigamuxa
+  note:        "pre-release demo for feedback"

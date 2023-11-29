@@ -1,44 +1,48 @@
-# usage> build
+#  clog> build
 # short> build & inject metadata into clog
-# long>  build & inject metadata into clog
-#                             _
-#   ___   _ __   ___   _ _   | |_   _ __   __ _
-#  / _ \ | '_ \ / -_) | ' \  |  _| | '_ \ / _` |
-#  \___/ | .__/ \___| |_||_|  \__| | .__/ \__, |
-#        |_|                       |_|    |___/
+# extra> build & inject metadata into clog
+#                             _                                       _
+#   ___   _ __   ___   _ _   | |_   ___  __ _   ___   _ _    ___   __| |  ___
+#  / _ \ | '_ \ / -_) | ' \  |  _| (_-< / _` | |___| | ' \  / _ \ / _` | / -_)
+#  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
+#        |_|                            |___/
 
-# export the commit ID for the build
+[ -f clogrc/common.sh ] && source clogrc/common.sh  # helper functions
+# -----------------------------------------------------------------------------
 
-# usage> build
-# short> build & inject metadata into clog
-# long>  build & inject metadata into clog
-#        _
-#   __  | |  ___   __ _
-#  / _| | | / _ \ / _` |
-#  \__| |_| \___/ \__, |
-#                 |___/
-# export the commit ID for the build
+source clogrc/check.sh  ignore                    # preflight - ignore warnings
+printf "${cT}Project$cS $PROJECT$cX\n"
 
-source clogrc/core/inc.sh
+# -----------------------------------------------------------------------------
 
-GOCODE=$(cat <<-EOM
-package versionstr  //auto-generated (versionstr.go)
-const build = "$(git rev-list -1 HEAD)"
-const date = "$(date +%F)"
-EOM
-)
-echo "$GOCODE" > versionstr/versionstr-build-id.go
+# determine local OS & CPU
+fMachine
+fEcho "Build   on $cS${cOS}$cT with $cK${cPU}$cT architecture"
 
-fnInfo "Building ${cE}_win${cT}msgtsg.exe (${cE}amd64${cT}) with metadata"
-GOOS=windows  ;   GOARCH=amd64      ; go build -ldflags "-X main.UseLinkerOverrides=true"  -o _winmsgtsg.exe
+# export the commit ID & today's date for the build
+ID=$(git rev-list -1 HEAD)
+DT=$(date +%F)
 
-fnInfo "Building ${cW}_la${cT}msgtsg      (${cW}arm64${cT}) with metadata"
-GOOS=linux    ;   GOARCH=arm64      ; go build -ldflags "-X main.UseLinkerOverrides=true"  -o _lamsgtsg
 
-fnInfo "Building ${cC}_lx${cT}msgtsg      (${cC}amd64${cT}) with metadata$cX"
-GOOS=linux    ;   GOARCH=amd64      ; go build -ldflags "-X main.UseLinkerOverrides=true"  -o _lxmsgtsg
+# load in the arrays of variants & the EXE & EXElocal variables
+source clogrc/build-variants.sh
+APP="$EXE"
 
-fnInfo "Linking  ${cC}_lx${cT}msgtsg to ${cC}./clog$cX"
-rm msgtsg
-ln _lxmsgtsg msgtsg
+# build the artifacts
+mkdir -p tmp
+LEN=${#gOS[@]}
+for i in {1..$LEN}; do
+  OS=${gOS[$i]}
+  CPU=${gARCH[$i]}
+  fInfo "Build   ${cVER[$i]}${FILE[$i]}${cT} ($OS for $CPU) with metadata"
+  LDF=("-X main.LDos=$OS")
+  LDF+="-X main.LDcpu=$CPU"
+  LDF+="-X main.LDcommit=$ID"
+  LDF+="-X main.LDdate=$DT"
+  LDF+="-X main.LDappname=$APP"
+  LDFLAGS=$(printf " %s" "${LDF[@]}") # make a long linker loader string
+  GOOS=$OS GOARCH=$CPU go build -ldflags "$LDFLAGS" -o tmp/${FILE[$i]}
+done
 
+fInfo "To have a local $cS${cOS}$cT build on $cK${cPU}$cT, you might want:"
+fInfo "   $cC rm $cF ./$EXE $cC && ln $cF $EXElocal ./$EXE $cX"

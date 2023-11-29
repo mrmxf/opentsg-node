@@ -3,20 +3,30 @@ package main
 import (
 	"flag"
 	"fmt"
-	"opentpg/versionstr"
 	"time"
 
-	"gitlab.com/mmTristan/tpg-core/tpg"
+	"github.com/mrmxf/opentsg-node/versionstr"
 
-	errhandle "gitlab.com/mmTristan/tpg-core/errHandle"
+	"github.com/mrmxf/opentsg-core/tpg"
+
+	errhandle "github.com/mrmxf/opentsg-core/errHandle"
 )
 
-var UseLinkerOverrides string
+// dummy data to be overriden by linker injection for production
+var LDos = "?os"
+var LDcpu = "?cpu"
+var LDcommit = "0123456789|- dummy-||- data -||-----xxxx"
+var LDdate = "noDate"
+
+const LDappname = "opentsg"
 
 // or change this all into the core repo?
 func main() {
 	start := time.Now()
-	doOverride := len(UseLinkerOverrides) > 1
+	err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname)
+	if err != nil {
+		panic(err)
+	}
 
 	//bring in the input file
 	configfile := flag.String("c", "", "config file location")                  //default values as nothing
@@ -25,13 +35,23 @@ func main() {
 	outputmnt := flag.String("output", "", "extensions to all files to be saved")
 	outputLog := flag.String("log", "", "the type of log to be used")
 	doVersion := flag.Bool("version", false, "return the version information and exit")
+	doNote := flag.Bool("note", false, "report this version's deployment note")
+	doShortVersion := flag.Bool("v", false, "return the short version information and exit")
 
 	flag.Var(&myFlags, "key", "keys for accessing the intended web pages of content")
 
 	// if the version istrue
 	flag.Parse()
 	if *doVersion {
-		fmt.Printf("openTPG version %s\n", versionstr.Long(doOverride))
+		fmt.Printf(LDappname+" version %s\n", versionstr.Info.Long)
+		return
+	}
+	if *doNote {
+		fmt.Println(versionstr.Info.Note)
+		return
+	}
+	if *doShortVersion {
+		fmt.Println(versionstr.Info.Short)
 		return
 	}
 
@@ -51,7 +71,7 @@ func main() {
 		logs.PrintErrorMessage("F_CONFIG_OPENTPG_", configErr, true) // always make true for config errors
 		logs.LogFlush()
 	} else {
-		// run opentpg
+		// run opentsg
 		tpg.Draw(*debug, *outputmnt, *outputLog)
 	}
 	elapsed := time.Since(start)

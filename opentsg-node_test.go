@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"gitlab.com/mmTristan/tpg-core/tpg"
+	"github.com/mrmxf/opentsg-core/tpg"
 )
 
 // go test -bench=. -benchtime=40s
@@ -18,11 +18,11 @@ func BenchmarkNRGBA64(b *testing.B) {
 	}
 	//origStdout := os.Stdout
 	os.Stdout = w
-	opentpg, _ := tpg.FileImport("./ebu/loadergrid.json", "", true)
+	opentsg, _ := tpg.FileImport("./ebu/loadergrid.json", "", true)
 	//cont, framenumber, _ := core.FileImport("./ebu/loadergrid.json", "", true)
 	// run the Fib function b.N times
 	for n := 0; n < b.N; n++ {
-		opentpg.Draw(false, "", "")
+		opentsg.Draw(false, "", "")
 	}
 }
 
@@ -34,11 +34,11 @@ func BenchmarkACES(b *testing.B) {
 	}
 	//origStdout := os.Stdout
 	os.Stdout = w
-	opentpg, _ := tpg.FileImport("./ebu/loaderaces.json", "", true)
+	opentsg, _ := tpg.FileImport("./ebu/loaderaces.json", "", true)
 	//cont, framenumber, _ := core.FileImport("./ebu/loaderaces.json", "", true)
 	// run the Fib function b.N times
 	for n := 0; n < b.N; n++ {
-		opentpg.Draw(false, "", "")
+		opentsg.Draw(false, "", "")
 		//framedraw.Draw(cont, framenumber, false, "", "")
 	}
 }
