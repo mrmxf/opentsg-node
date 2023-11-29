@@ -57,15 +57,15 @@ vRnode=$(   getRemoteTag opentsg-node )   ; OOPS=$?
 vRwidgets=$( getRemoteTag opentsg-widgets ) ; OOPS=$?
 
 #print out the matching tags
-printf "$cC  golang$cT code           $cS $vCODE $cX\n"
+printf "${cC}golang$cT code           $cS $vCODE $cX\n"
 printf "${cT} local$cT git latest     $cS $vLOCAL$cX\n"
 printf "${cT} local$cT git HEAD       $cS $vHEAD$cX\n"
-printf "${cH}github$cT opentsg-core   $cS $vRcore    $cX\n"
-printf "${cH}github$cT opentsg-io     $cS $vRio      $cX\n"
-printf "${cH}github$cT opentsg-lab    $cS $vRlab     $cX\n"
-printf "${cH}github$cT opentsg-mhl    $cS $vRmhl     $cX\n"
-printf "${cH}github$cT opentsg-node   $cS $vRnode    $cX\n"
-printf "${cH}github$cT opentsg-widgets$cS $vRwidgets $cX\n"
+printf "${cS}github$cT opentsg-core   $cS $vRcore    $cX\n"
+printf "${cS}github$cT opentsg-io     $cS $vRio      $cX\n"
+printf "${cS}github$cT opentsg-lab    $cS $vRlab     $cX\n"
+printf "${cS}github$cT opentsg-mhl    $cS $vRmhl     $cX\n"
+printf "${cS}github$cT opentsg-node   $cS $vRnode    $cX\n"
+printf "${cS}github$cT opentsg-widgets$cS $vRwidgets $cX\n"
 
 # --- tag fixup ---------------------------------------------------------------
 
