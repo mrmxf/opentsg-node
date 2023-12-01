@@ -3,7 +3,7 @@ module github.com/mrmxf/opentsg-node
 go 1.21.4
 
 require (
-	github.com/mrmxf/opentsg-core v0.4.0
+	github.com/mrmxf/opentsg-core v0.4.1
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -31,9 +31,9 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
 	github.com/matoous/go-nanoid v1.5.0 // indirect
-	github.com/mrmxf/opentsg-io v0.0.0-20230830164134-91af35b9a721 // indirect
-	github.com/mrmxf/opentsg-mhl v0.0.0-20230713210602-b4af671ab2ac // indirect
-	github.com/mrmxf/opentsg-widgets v0.4.0 // indirect
+	github.com/mrmxf/opentsg-io v0.4.0 // indirect
+	github.com/mrmxf/opentsg-mhl v0.4.0 // indirect
+	github.com/mrmxf/opentsg-widgets v0.4.1 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/peterbourgon/mergemap v0.0.1 // indirect
 	github.com/spf13/afero v1.10.0 // indirect
