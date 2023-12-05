@@ -33,17 +33,20 @@ APP="$EXE"
 # build the artifacts
 mkdir -p tmp
 LEN=${#gOS[@]}
-for i in {1..$LEN}; do
+fInfo "Building$cI $LEN$cT outputs"
+
+for i in $(seq 1 $LEN); do
   OS=${gOS[$i]}
   CPU=${gARCH[$i]}
   fInfo "Build   ${cVER[$i]}${FILE[$i]}${cT} ($OS for $CPU) with metadata"
   LDF=("-X main.LDos=$OS")
-  LDF+="-X main.LDcpu=$CPU"
-  LDF+="-X main.LDcommit=$CID"
-  LDF+="-X main.LDdate=$DATE"
-  LDF+="-X main.LDsuffix=$SemSfx"
-  LDF+="-X main.LDappname=$APP"
+  LDF+=" -X main.LDcpu=$CPU"
+  LDF+=" -X main.LDcommit=$CID"
+  LDF+=" -X main.LDdate=$DATE"
+  LDF+=" -X main.LDsuffix=$SemSfx"
+  LDF+=" -X main.LDappname=$APP"
   LDFLAGS=$(printf " %s" "${LDF[@]}") # make a long linker loader string
+  # printf "LINK: $LDFLAGS\n"
   GOOS=$OS GOARCH=$CPU go build -ldflags "$LDFLAGS" -o tmp/${FILE[$i]}
 done
 
