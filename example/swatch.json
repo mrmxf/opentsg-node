@@ -10,25 +10,13 @@
       { "uri": "pyramid.json", "name": "pyramid" },
       { "uri": "pyramid-data.json", "name": "d" }
     ],
-    "args": [
-      {
-        "name": "swatchParams",
-        "type": "string",
-        "doc": "string index of imported swatch"
-      },
-      {
-        "name": "frameNumber",
-        "type": "number",
-        "doc": "number of the current frame - remove framecounter as it is a magic string etc"
-      }
-    ],
     "generate": [
       {
         "_COMMENT": "We should probably have a better syntax for mapping an N dimensional array of data to objects!",
           "name": [{"R":"[:]"}, {"CD":"[:]"}, {"B":"[:]"}],
           "action": {
            "pyramid" : {
-           "d.{{swatchParams}}": ["grid.location","backgroundcolor"]}
+           "d.{{swatchType}}": ["grid.location","backgroundColor"]}
           }
       }
     ]

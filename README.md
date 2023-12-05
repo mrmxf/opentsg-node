@@ -238,7 +238,6 @@ To generate a 1000 ebu images to test performance and cpu usage, change the ebu 
 ## Installation (pre-release)
 
 
-
 Create a GitLab **Personal Access Token** for the private dev repos. store it in the ENV variaable `GITLAB_PAT`.
 ```
 # install token and update dependencies
