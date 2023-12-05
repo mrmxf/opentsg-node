@@ -1,4 +1,8 @@
 # opentsg codenames from https://www.mythical-creatures-and-beasts.com/
+- version:	   "v0.4.1"
+  date:        2023-12-05
+  codename:    dragon
+  note:        cmaelCapsConsistency
 - version:	   "v0.4.0"
   date:        2023-11-29
   codename:    dragon

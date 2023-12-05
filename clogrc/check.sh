@@ -9,9 +9,9 @@
 [ -f clogrc/common.sh ] && source clogrc/common.sh  # helper functions
 
 # --- status ------------------------------------------------------------------
-OOPS=0                                   # non zero is bad - count the problems
+OOPS=0                                          # non zero problem count is bad
 
-# --- check functions ---------------------------------------------------------
+# --- functions ---------------------------------------------------------------
 
 # getRemoteTag "opentsg-component" "ref" # get tag. [ -z "$2" ] adds color
 function getRemoteTag () {
@@ -27,7 +27,33 @@ function getRemoteTag () {
   return $OOPS
 }
 
-# --- git issues handling -----------------------------------------------------
+# Print out the status of something
+# $1 = category string e.g. "github"
+# $2 = msg text
+# $3 = highlight for the thing (e.g. $cE for error)
+# $4 = name of the thing
+# $5 = flag for the reference tag
+function fReport() {
+  isRef=""
+  [[ -n "$5" ]] && isRef="$cE<$cW--$cI--$cS--ref tag$cX"
+  case "$1" in
+    "golang" | "python" | "code")  category=$(printf "${cC}%10s" "$1") ;;
+    "local")                       category=$(printf "${cI}%10s" "$1") ;;
+    "github")                      category=$(printf "${cS}%10s" "$1") ;;
+    "gitlab")                      category=$(printf "${cW}%10s" "$1") ;;
+    "*")                           category=$(printf "${cT}%10s" "$1") ;;
+  esac
+  msg=$(printf "$cT %11s" "$2")
+  printf "${category} $msg $3$4 $isRef$cX\n"
+}
+
+# --- git repo dependencies ---------------------------------------------------
+dC=() ; dVer=() ;  ; dName=()   ; dRepo=()
+n="opentsg-node"   ; dName+="$n"; dRepo+="https://github.com/mrmxf/$n.git"
+n="opentsg-modules"; dName+="$n"; dRepo+="https://github.com/mrmxf/$n.git"
+n="opentsg-mhl"    ; dName+="$n"; dRepo+="https://github.com/mrmxf/$n.git"
+
+# --- git working tree handling -----------------------------------------------
 issue=$(git status | grep 'not stage')
 [ -n "$issue" ] && printf "${cE}Stage$cT or$cW Stash$cT changes before build$cX\n" && ((OOPS++))
 
@@ -41,33 +67,33 @@ issue=$(git status | grep 'working tree clean')
 [ -z "$issue" ] && printf "${cE}Changes!$cT Working tree must be$cS clean$cT before build$cX\n" && ((OOPS++))
 
 # --- tag handling ------------------------------------------------------------
-gBRANCH=$(git branch --show-current) && [[ "main" == "$gBRANCH" ]] && gBRANCH="${cE}$gBRANCH"
+gBRANCH=$(git branch --show-current)
 vCODE=$(awk 'match($0, /"([^"]*)/) { print substr($0, RSTART+1, RLENGTH-1) }' ./versionstr/releases.yml | head -1)
-vREF="$vCODE"
 vLOCAL=$(git tag | tail -1)       && [ -z "$vLOCAL" ] && vLOCAL="$untagged"
 vHEAD=$(git tag --points-at HEAD) && [ -z "$vHEAD" ]  && vHEAD="${cW}untagged"
+
+vREF="$vCODE"
 [[ "$vLOCAL" != "$vREF" ]] && vLOCAL="${cE}$vLOCAL"
 [ $OOPS -gt 0 ] && vLOCAL="$cW$vLOCAL"  # use color to warn that tag is dirty
 
+# print out the BRANCH we're on - show main in red, rc in green
+cZ="$cT"
+[[ "main" == "$gBRANCH" ]] && cZ=$cE
+[[ "rc"   == "$gBRANCH" ]] && cZ=$cS
+fReport "local" "branch" "$cZ" $gBRANCH
 
-vRcore=$(   getRemoteTag opentsg-core )   ; OOPS=$?
-vRio=$(     getRemoteTag opentsg-io )     ; OOPS=$?
-vRlab=$(    getRemoteTag opentsg-lab )    ; OOPS=$?
-vRmhl=$(    getRemoteTag opentsg-mhl )    ; OOPS=$?
-vRnode=$(   getRemoteTag opentsg-node )   ; OOPS=$?
-vRwidgets=$( getRemoteTag opentsg-widgets ) ; OOPS=$?
+# get tag from the repos & update error count from the subprocess
+for i in ${#dRepo[@]}; do
+  ver=$( getRemoteTag ${dRepo[$i]} ) ; OOPS=$?
+  dVer+=ver
+  fReport "github" ${dName[$i]} $cT $ver
+done
 
 #print out the matching tags
-printf "${cC}golang$cT code           $cS $vCODE $cX\n"
-printf "${cT} local$cT git branch     $cT $gBRANCH $cX\n"
-printf "${cT} local$cT git latest     $cS $vLOCAL$cX\n"
-printf "${cT} local$cT git HEAD       $cS $vHEAD$cX\n"
-printf "${cS}github$cT opentsg-core   $cS $vRcore    $cX\n"
-printf "${cS}github$cT opentsg-io     $cS $vRio      $cX\n"
-printf "${cS}github$cT opentsg-lab    $cS $vRlab     $cX\n"
-printf "${cS}github$cT opentsg-mhl    $cS $vRmhl     $cX\n"
-printf "${cS}github$cT opentsg-node   $cS $vRnode    $cX\n"
-printf "${cS}github$cT opentsg-widgets$cS $vRwidgets $cX\n"
+fReport "golang" "code" "$cS" $vCODE isRef
+
+fReport "local"  "git latest"  "$vLOCAL"
+fReport "local"  "git HEAD"    "$vHEAD"
 
 # --- tag fixup ---------------------------------------------------------------
 
