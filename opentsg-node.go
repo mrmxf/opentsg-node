@@ -7,9 +7,9 @@ import (
 
 	"github.com/mrmxf/opentsg-node/versionstr"
 
-	"github.com/mrmxf/opentsg-core/tpg"
+	"github.com/mrmxf/opentsg-modules/opentsg-core/tpg"
 
-	errhandle "github.com/mrmxf/opentsg-core/errHandle"
+	errhandle "github.com/mrmxf/opentsg-modules/opentsg-core/errHandle"
 )
 
 // dummy data to be overriden by linker injection for production

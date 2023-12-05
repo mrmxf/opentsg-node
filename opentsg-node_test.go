@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mrmxf/opentsg-core/tpg"
+	"github.com/mrmxf/opentsg-modules/opentsg-core/tpg"
 )
 
 // go test -bench=. -benchtime=40s
