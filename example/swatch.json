@@ -1,6 +1,6 @@
 {
     "documentation": [
-      "## MSG Swatch widget",
+      "## Swatch widget",
       "",
       "Render a matrix of pyramid squares over a background (possibly",
       "",
@@ -9,18 +9,6 @@
     "include": [
       { "uri": "pyramid.json", "name": "pyramid" },
       { "uri": "pyramid-data.json", "name": "d" }
-    ],
-    "args": [
-      {
-        "name": "swatchParams",
-        "type": "string",
-        "doc": "string index of imported swatch"
-      },
-      {
-        "name": "frameNumber",
-        "type": "number",
-        "doc": "number of the current frame - remove framecounter as it is a magic string etc"
-      }
     ],
     "generate": [
       {
