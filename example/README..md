@@ -87,7 +87,8 @@ in the generated widget.
 
 The dimension allow ndimensons of to data be placed in a single dimension array.
 The dimensions in the demo mean theres a 3 dimensional dot path, which consists of
-5 in the base dimension, eah one of these has 4 further children and those 4 children have a further 3 each.
+5 in the base dimension, eah one of these has 4 further children and those 4 children 
+have a further 3 each.
 This results in 60 data points in total. These are stored in a depth first order in the data.
 
 In the demo the range of values with the declared names are R[0:4].CD[0:3].B[0:2]
