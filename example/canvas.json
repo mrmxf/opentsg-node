@@ -1,6 +1,6 @@
 {
     "type": "builtin.canvasoptions",
-    "name":["000-{{swatchType}}-{{framenumber}}.png"],
+    "name": ["x{{framenumber}}.png"],
     "frameSize": { "w": 4096, "h": 2160 },
     "linewidth": 0.5,
     "filedepth": 16,
@@ -8,7 +8,7 @@
     "gridRows": 540,
     "frame analytics" : {
       "configuration": {"enabled":true},
-      "average color":  {"enabled":true},
-      "phash":  {"enabled":true}
+      "average color": {"enabled":true},
+      "phash":{"enabled":true}
     }
   }
