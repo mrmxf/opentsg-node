@@ -7,9 +7,10 @@ With a main aim of reducing the number of widgets being declared in factories.
 ## how does it work
 
 The generate field always runs before the create field, in every factory json.
-They do **not** take precedence over parent create fields.
+They do **not** take precedence over create fields in parent factories.
 
-It takes a base widget and uses it to generate a new widget, replacing specified
+Generate works by taking a base widget and using it to generate a new widget, 
+replacing specified
 fields in the base widget with the values from the data.
 
 ```json
@@ -41,8 +42,9 @@ fields in the base widget with the values from the data.
 
 The include section contains a base widget `pyramid` and
 a data json `d`. You can include additional widgets to
-run in the create section, the factory can generate and
-create with no overlap.
+run in the create section, the factory can use both
+the generate and create fields in the same instance
+without any repercussions.
 
 ```json
 "include": [
@@ -53,9 +55,11 @@ create with no overlap.
 
 ### Generate Section
 
-the name field is the naming format of the dot paths that are generated with the widgets, as well as declaring
-the range of the values to choose from the data. The length of the array has to match the number of dimensions,
-as the first position in the array relates to the first dimension of the data etc
+The name field is the naming format of the dot paths that are generated with the widgets, as well as declaring
+the range of the values to choose from the data. The length of the name array has to match the number of dimensions,
+as each position in the array matches a dimension of the data.
+e.g. the first position in the array relates to the first dimension of the data, so `{"R":"[:]"}` would name the
+first dimension of the data `R{{number}}`.
 In this demo `[:]` means use the full range of that data dimension. `[0:2]` would be an inclusive:exclusive range of the data.
 The key is the name that is used to generate that name at layer of the dotpath, which is followed by the dimension position.
 In this demo the names would go from R0.CD0.B0
