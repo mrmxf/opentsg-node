@@ -8,7 +8,7 @@
     "gridRows": 540,
     "frame analytics" : {
       "configuration": {"enabled":true},
-      "average color": {"enabled":true},
-      "phash":{"enabled":true}
+      "average color":  {"enabled":true},
+      "phash":  {"enabled":true}
     }
   }
