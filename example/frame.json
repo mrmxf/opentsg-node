@@ -10,9 +10,10 @@
         {"uri":"canvas.json", "name":"canvas", "args":["swatchType"]},
         {"uri":"swatch.json", "name":"swatch", "args":["swatchType"]}
     ],
+   
     "create":[
         {
-            "canvas":{"linewidth": 0.5}},{
+            "canvas":{"linewidth": 0.5,"name":["000-{{swatchType}}-{{framenumber}}.png"]}},{
             "swatch":{}
         }
     ]
