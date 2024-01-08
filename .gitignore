@@ -1,4 +1,3 @@
-
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
@@ -7,6 +6,7 @@ tmp-*
 tmp/*
 !*/readme.md
 
+# dev build
 /*tsg-node
 
 clogrc/core
@@ -23,7 +23,6 @@ verdefactoryarchive
 **/*.7th
 **/*.mhl
 **/*.pem
-**/*.yaml
 **/*.jpg
 **/*.jpeg
 
@@ -32,12 +31,6 @@ ov/**
 
 #restore images that we want
 #!x/*.png
-# !x/*.tiff
-# !y/*.png
-# !y/*.tiff
-# !z/*.png
-# !z/*.tiff
-# !recAssets/*.png
 
 #ignore any temporary mounted folders (linux)
 mnt/
