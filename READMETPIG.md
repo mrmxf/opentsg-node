@@ -4,10 +4,9 @@ TPIG stands for Test Pattern Input Geometry. It is used for mapping flat images 
 
 ## Using a TPIG with OpenTPG
 
-The tpig geometry combines with the grid system of OpenTPG. Where the grid coordinates contain all the positions of TPIG geometry that lie under a grid coordinate, this allows us to place patterns on the TPIG using a scalable system. The grid system will be demonstrated with the demo later in the readme.
+The tpig geometry is flattened to create a base image template, which the grid system of OpenTPG lies on top of. The grid system will be demonstrated with the demo later in the readme.
 
-In this demo, we use a 16x16 grid to demonstrate the layout on grid and tpig geometry. The grid locations range from A0 to P15 or R1C1 to R16C16 depending on your preferred method.
-
+In this demo, we use a 16x16 grid to demonstrate the layout on grid and the tpig geometry. The grid locations range from A0 to P15 or R1C1 to R16C16 depending on your preferred coordinate method.
 
 ## Demo 
 
@@ -15,9 +14,7 @@ This demo runs opentpg, generating the four/five colour algorithm, for TPIG geom
 
 To get started run `go build` on a linux system. {BRUCE NOTE to do so on windows we need to remove the sth saver/ change it for the windows version which is not yet made}
 
-
 Then run this command `./opentpg --c tpig/gridexample.json --log stdout --debug` to generate the OpenTPG grid four colour example. Run this command `./opentpg --c tpig/tpigexample.json --log stdout --debug` to generate the Las Vegas Sphere four colour test pattern. The generated images will be in the tpig/example folder and the TPIG pattern will have produced the carved pictures as well as the flat image. Please note the TPIG example will take a few minutes to run.
-
 
 The size of the TPIG canvas supersedes the base canvas size, which is why the demo produces two sized different images. 
 
