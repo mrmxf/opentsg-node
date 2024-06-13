@@ -36,17 +36,17 @@ test:
   #
 
 deploy:
-  stage: deploy 
+  stage: deploy
   tags:
     - linux
   script: # remove the runner file when deploying so its not passed along
     - rm .gitlab-ci.yml
     - chmod u+x ./clogrc/pullRequest.sh
     - chmod u+x ./clogrc/goReplace.sh
-    - ./clogrc/goReplace.sh "$PWD" "gitlab.com/mmTristan/tpg-widgets" "github.com/mmTristan/tpg-widgets-private"
-    - ./clogrc/goReplace.sh "$PWD" "gitlab.com/mmTristan/tpg-core" "github.com/mmTristan/tpg-core-private"
+    - ./clogrc/goReplace.sh "$PWD" "github.com/mrmxf/opentsg-widgets" "github.com/mmTristan/tpg-widgets-private"
+    - ./clogrc/goReplace.sh "$PWD" "github.com/mrmxf/opentsg-core" "github.com/mmTristan/tpg-core-private"
     - ./clogrc/goReplace.sh "$PWD" "gitlab.com/mmTristan/tpg-io" "github.com/mmTristan/tpg-io-private"
-    - ./clogrc/goReplace.sh "$PWD" "opentpg" "github.com/mmTristan/private-tpg"
+    - ./clogrc/goReplace.sh "$PWD" "opentsg" "github.com/mmTristan/private-tpg"
     - ./clogrc/pullRequest.sh $GITHUB_PAT "$CI_COMMIT_MESSAGE" "private-tpg"
     #"$CI_COMMIT_BRANCH"
   only:

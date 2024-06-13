@@ -16,7 +16,7 @@
           "name": [{"R":"[:]"}, {"CD":"[:]"}, {"B":"[:]"}],
           "action": {
            "pyramid" : {
-           "d.{{swatchParams}}": ["grid.location","backgroundcolor"]}
+           "d.{{swatchType}}": ["grid.location","backgroundColor"]}
           }
       }
     ]
