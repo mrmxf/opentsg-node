@@ -31,6 +31,8 @@ ov/**
 
 #restore images that we want
 #!x/*.png
+!_docs/_images/*.png
+!_docs/_images/*.jpg
 
 #ignore any temporary mounted folders (linux)
 mnt/
