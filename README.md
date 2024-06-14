@@ -2,7 +2,7 @@
 
 The rendering node of the open source test pattern generator.
 
-## Running opentsg-node Via SSH
+## Running opentsg-node Via SSH 
 
 opentsg-node is designed to be run on a cloud compute instance,  while test
 pattern configuration files are made on a low powered gitpod or similar

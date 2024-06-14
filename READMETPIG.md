@@ -33,14 +33,14 @@ Please make sure you have followed the installation instructions in the README, 
 
 All output from the demo will be saved in the  `tpig/example` folder.
 
-To generate the flat 2d image witn **no** geometry run  `./opentpg --c tpig/loadergrid.json --log stdout --debug`. 
+To generate the flat 2d image witn **no** geometry run  `./opentsg-node --c tpig/loadergrid.json --log stdout --debug`. 
 This generates the OpenTPG ebu3373 chart, as a flat test pattern.
 
 The output should look like
 
 <img src="./_docs/_images/ebu3373.png" alt="House TPIG" width="500"/>
 
-To generate a  TPIG for the house geometry  run `./opentpg --c tpig/loaderTPIG.json --log stdout --debug`. This now uses a canvas file that has TPIG geometry.
+To generate a  TPIG for the house geometry  run `./opentsg-node --c tpig/loaderTPIG.json --log stdout --debug`. This now uses a canvas file that has TPIG geometry.
 
 The only difference between this and the previous input json is
 

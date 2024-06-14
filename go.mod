@@ -3,7 +3,7 @@ module github.com/mrmxf/opentsg-node
 go 1.21.4
 
 require (
-	github.com/mrmxf/opentsg-modules v0.0.0-20231204180059-abd3194f953d
+	github.com/mrmxf/opentsg-modules v0.0.0-20240614100723-886e1b917070
 	gopkg.in/yaml.v2 v2.4.0
 )
 
