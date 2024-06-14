@@ -1,7 +1,0 @@
-{
-    "type": "builtin.geometrytext",
-    "textColor" : "#FFFFFF",
-    "grid": {
-        "location": "A0:P15"
-    }
-}

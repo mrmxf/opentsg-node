@@ -1,0 +1,40 @@
+{
+  "include": [
+    {
+      "uri": "bars.json",
+      "name": "bars"
+    },
+    {
+      "uri": "sat.json",
+      "name": "saturation"
+    },
+    {
+      "uri": "base.json",
+      "name": "canvas"
+    },
+    {
+      "uri": "twosi.json",
+      "name": "twosi"
+    },
+    {
+      "uri": "nb.json",
+      "name": "black"
+    },
+    {
+      "uri": "luma.json",
+      "name": "lum"
+    }
+  ],
+"create":[{
+  "canvas":{    
+    "name": [
+      "./tpig/example/ebuHouse.png"
+      ],
+    "geometry":"./objBases/house.json"
+  },
+  "bars":{},
+  "saturation":{},
+  "lum":{},
+  "black":{},
+  "twosi" :{}}]
+}

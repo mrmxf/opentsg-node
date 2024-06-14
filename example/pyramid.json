@@ -2,9 +2,9 @@
     "type": "builtin.textbox",
     "text": [""],
     "font": "body",
-    "textcolor": "#f2e2eb",
-    "bordercolor": "#333333",
-    "backgroundcolor": "#000000",
-    "bordersize": 0,
+    "textColor": "#f2e2eb",
+    "borderColor": "#333333",
+    "backgroundColor": "#000000",
+    "borderSize": 0,
     "grid": { "location": "a0" }
   }

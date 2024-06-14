@@ -19,8 +19,8 @@ targetBranch="main"
 rm go.mod
 
 # if statement here
-#Walk_dir "$PWD" "gitlab.com/mmTristan/tpg-widgets" "github.com/mmTristan/tpg-widgets-private"
-#Walk_dir "$PWD" "gitlab.com/mmTristan/tpg-core" "github.com/mmTristan/tpg-core-private"
+#Walk_dir "$PWD" "github.com/mrmxf/opentsg-widgets" "github.com/mmTristan/tpg-widgets-private"
+#Walk_dir "$PWD" "github.com/mrmxf/opentsg-core" "github.com/mmTristan/tpg-core-private"
 #Walk_dir "$PWD" "gitlab.com/mmTristan/tpg-io" "github.com/mmTristan/tpg-io-private"
 
 
@@ -51,13 +51,13 @@ cd ..
 # remove the original git
 rm -R .git
 # replace with the github target
-cp -R "tmp/$pullrepo/.git" ".git" 
+cp -R "tmp/$pullrepo/.git" ".git"
 # remove the tmp folder
 rm -R tmp
 
 
 # add the branch to the hosted forked repo
-git add . 
+git add .
 # remove uneeded pipeline files
 git commit -m "$message"
 git branch -M "$Branch"
