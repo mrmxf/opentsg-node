@@ -21,13 +21,13 @@ sure it runs as intended, please make sure you have done the following.
 
 ## How do TPIGs work
 
-A TPIG  (test pattern input geometry) file tells OpenTSG how to map a 3d object into a 2d image, so the image can then be displayed on the 3d display. This works by creating the base test pattern layout using the TPIG, which gives the flattened object layout , then running openTSG with that base test pattern.
+A TPIG  (test pattern input geometry) file tells OpenTSG how to map a 3d object into a 2d image, so the image can then be displayed on the 3d display. This works by flattening the object into a base test pattern layout using the TPIG, then running openTSG with that base test pattern. The base test pattern can then be applied to the 3d display.
 
 ## Demo
 
 This demo runs OpenTSG, generating the ebu3373 test pattern, for the TPIG geometry of a simple house and a standard 2d image.
-You will get out two images, the first is ebu3373 which will be `./tpig/example/ebu3373.png`, then the
-TPIG version at `./tpig/example/ebuHouse.png`.
+You will get out two images, the first is ebu3373 which will be found at`./tpig/example/ebu3373.png`, then the
+TPIG version which will be found at `./tpig/example/ebuHouse.png`.
 
 Please make sure you have followed the installation instructions in the README, and that OpenTSG is running, before starting the demo
 
@@ -44,7 +44,7 @@ To generate a  TPIG for *insert* geometry  run `./opentpg --c tpig/tpigexample.j
 
 The only difference between this and the previous input json is
 
-the first json had
+the first input json (`tpig/gridexample.json`) had
 
 ```json
 "canvas":{}
