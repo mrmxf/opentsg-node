@@ -31,7 +31,9 @@ fields in the base widget with the values from the data.
           "name": [{"R":"[:]"}, {"CD":"[:]"}, {"B":"[:]"}],
           "action": {
            "pyramid" : {
+
            "d.{{swatchTypes}}": ["grid.location","backgroundColor"]}
+
           }
       }
     ]

@@ -1,184 +1,103 @@
-# TPIG
+# TPIG Demo
 
-TPIG stands for Test Pattern Input Geometry. It is used for mapping flat images
-to 3d screens.
+TPIG stands for Test Pattern Input Geometry. It is used for mapping flat images to 3d displays.
 
-## Using a TPIG with opentsg
+This demo will walk you through generating a pattern for a 2d display, and then for a 3d object that requires a TPIG file.
 
-The tpig geometry combines with the grid system of opentsg. Where the grid
-coordinates contain all the positions of TPIG geometry that lie under a grid
-coordinate, this allows us to place patterns on the TPIG using a scalable
-system. The grid system will be demonstrated with the demo later in the readme.
+The demo has the following contents:
 
-In this demo, we use a 16x16 grid to demonstrate the layout on grid and tpig
-geometry. The grid locations range from A0 to P15 or R1C1 to R16C16 depending
-on your preferred method.
+- [Pre Requisites](#pre-requisites)
+- [How do TPIGs work](#how-do-tpigs-work)
+- [Running the demo](#demo)
+- [TPIG technical info](#tpig-technical-information)
+
+## Pre requisites
+
+In order to get the most out of this demo and to make
+sure it runs as intended, please make sure you have done the following.
+
+- Installed / Built openTSG
+- You have read the documentation and are familiar with OpenTSG
+
+## How do TPIGs work
+
+A TPIG  (test pattern input geometry) file tells OpenTSG how to map a 3d object into a 2d image, so the image can then be displayed on the 3d display. This works by flattening the object into a base test pattern layout using the TPIG, then running openTSG with that base test pattern. The base test pattern can then be applied to the 3d display.
 
 ## Demo
 
-This demo runs opentsg, generating the four/five colour algorithm, for TPIG
-geometry of the Las Vegas Sphere and the standard grid geometry of opentsg.
-Both use a 16x16 grid to map the four colour widget to the test pattern.
+This demo runs OpenTSG, generating the ebu3373 test pattern, for the TPIG geometry of a simple house and a standard 2d image.
+You will get out two images, the first is ebu3373 which will be found at`./tpig/example/ebu3373.png`, then the
+TPIG version which will be found at `./tpig/example/ebuHouse.png`.
 
-To get started run `go build` on a linux system. {BRUCE NOTE to do so on
-windows we need to remove the sth saver/ change it for the windows version
-which is not yet made}
+Please make sure you have followed the installation instructions in the README, and that OpenTSG is running, before starting the demo
 
-Then run this command
+All output from the demo will be saved in the  `tpig/example` folder.
 
-```sh
-./opentsg --c tpig/gridexample.json --log stdout --debug
-```
+To generate the flat 2d image witn **no** geometry run  `./opentsg-node --c tpig/loadergrid.json --log stdout --debug`. 
+This generates the OpenTPG ebu3373 chart, as a flat test pattern.
 
- to generate the opentsg grid four colour example. Run this command
+The output should look like
 
-```sg
-./opentsg --c tpig/tpigexample.json --log stdout --debug
-```
+<img src="./_docs/_images/ebu3373.png" alt="House TPIG" width="500"/>
 
-to generate the Las Vegas Sphere four colour test pattern. The generated
-images will be in the tpig/example folder and the TPIG pattern will have
-produced the carved pictures as well as the flat image. Please note the TPIG
-example will take a few minutes to run.
+To generate a  TPIG for the house geometry  run `./opentsg-node --c tpig/loaderTPIG.json --log stdout --debug`. This now uses a canvas file that has TPIG geometry.
 
-The size of the TPIG canvas supersedes the base canvas size, which is why the
-demo produces two sized different images.
+The only difference between this and the previous input json is
 
-### What is the difference between the input files?
-
-One has an test pattern input geometry (TPIG) file in the canvas widget, that
-is the widget that tells opentsg the set up for the test pattern e.g. how big
-the image is, any background colours and what the file names are to save.
-
-The only difference between the set up of the example files is the canvas
-widget has the geometry and a new save name for the generated test pattern.
-
-### The Four Colour Widget
-
-Has a type, location and a colour pallette.
-
-Type tells opentsg what type of widget the JSON information relates to.
+the first input json (`tpig/gridexample.json`) had
 
 ```json
-"type": "builtin.fourcolor"
+"canvas":{}
 ```
 
-colors are the colors to be used by the four colour algorithm in order. The
-number of colours declared is the number of colours used by the algorithm, in
-the order declared. At least four colours must be used. A palette of 5 colours
-e.g. `"colors" : ["#FF0000", "#00FF00", "#0000FF", "#00FFFF", "#FF00FF"]` is
-recommended for larger images as the four colour palette may result in a
-timeout error.
+which has been updated to.
 
 ```json
-"colors" : ["#FF0000", "#00FF00", "#0000FF", "#00FFFF", "#FF00FF"]
+"canvas":{    
+    "name": [
+      "./tpig/example/ebuHouse.png"
+      ],
+    "geometry":"./objBases/house.json"
+  }
 ```
 
-Grid is the grid location on the test pattern that this widget applies to.
-"A0:P15" is the whole range of the 16x16 grid.
+Which has now added the geometry field into the canvas options file (`tpig/base.json`)
+for openTSG to use. (And the file name to avoid clashes)
 
-```json
-"grid": {
-    "location": "A0:P15"
-}
-```
+The output should look like
 
-### Breaking down the input JSONs
+<img src="./_docs/_images/ebuHouse.png" alt="House TPIG" width="500"/>
 
-Each example JSON has an include and create field. The include field tells
-opentsg what JSON to load into the system these can be widgets or more include
-style JSONs. The create field is an array, where each index is all the widgets
-to be used per frame. Updates can be added to the widget like so, or the
-tpig/four.json file can be updated.
+Try visualising the test pattern geometry with Blender ( or other services ).
+Using the house obj at `tpig/objBases/house.obj` and the generated image  you made at `tpig/example/out.png`.
 
-```json
-"four": {"colors" : ["#FF0000", "#00FF00", "#00000F", "#00FF0F", "#FFFFFF"]}
-```
+It will look something like
 
-This will overwrite the original colors in four with ["#FF0000", "#00FF00",
-"#00000F", "#00FF0F", "#FFFFFF"].
+<img src="./_docs/_images/houseBlenderViewWrapped.jpg" alt="House TPIG" width="500"/>
 
-The file `labelandfour.json` has the create section ordered as
+Congratulations! You made your first test pattern for a 3d object 🎉
 
-```json
-"create": [{"four": {}},{"label": {}}]
-```
+### Next steps
 
-this explicitly tells open tpg to run the four widget before the label widget.
-This behaves differently from the other create function as it is a nested JSON
-file and does not effect the frame order.
+Try running it with more TPIGs (Yet to be added)
 
-### Things to try
+## TPIG Technical information
 
-Try updating the colours to be used by the colouring algorithm with the
-following JSON. Replace the create field in tpig/labelandfour.json and try
-running the example `./opentsg --c tpig/tpigexample.json --log stdout --debug`
-again.
+The size of the TPIG canvas supersedes the base canvas size in the json,
+which is why the demo produces two sized different images (the TPIG image should be bigger).
 
-```json
-"create": [
-    {
-    "label": {},
-    "four": {"colors" :["#FC440F", "#1EFFBC", "#7C9299", "#1F01B9", "#B4E33D"]}
-    }
-]
-```
+Find about more about how TPIGs work
+check the opentsg-core [TPIG docs](https://github.com/mrmxf/opentsg-modules/blob/main/opentsg-core/_docs/gridgen/doc.md)
 
-Or change it so that only half of the test pattern is filled in with four
-colours. The other half will be a gray background
+To build your own TPIGs see the technical documentation [here](https://github.com/mrmxf/opentsg-modules/blob/main/opentsg-core/_docs/gridgen/doc.md)
 
-```json
-"create": [
-    {
-    "label": {},
-    "four": {"grid": {
-        "location": "A0:H15"
-    }}
-    }
-]
-```
+### Widgets Built for TPIGs
 
-These can be combined to form a half filled screen with a new colour palette.
+Some widgets are built for geometric patterns in mind.
+When these are used without a TPIG, the standard grid layout
+of OpenTSG is used as the default to allow the widget to run.
 
-```json
- "create": [
-        {
-            "canvas": {},
-            "label": {
-                "colors": [
-                    "#F7F4EA",
-                    "#DED9E2",
-                    "#C0B9DD",
-                    "#80A1D4",
-                    "#75C9C8"
-                ],
-                "grid": {
-                    "location": "A0:H15"
-                }
-            }
-        }
-    ]
-```
+The complete list of TPIG widgets is given below.
 
-## TPIG file layout
+- [Four colour](https://github.com/mrmxf/opentsg-modules/blob/main/opentsg-widgets/_docs/fourcolour/doc.md)
 
-The size of the resulting flat image is declared in
-
-```json
-"Dimensions": {"Flat":{}}
-```
-
-The carve locations and their relative sizes  are declared in
-
-```json
- "Carve": {"A1": {}}
-```
-
-this gives the carve name and its size.
-
-TileLayout is an array of the tile's flat position, carve position and the
-carved location of the tile. This information is used with the geometry of the
-system and creating a mask of the shape, that is the area of the image that can
-be filled in. Areas of the main image that do not correlate to a tile will not
-be coloured in under any circumstance. The tags gives extra information about
-each tile such as it's neighbours.
