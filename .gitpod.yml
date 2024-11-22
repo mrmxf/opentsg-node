@@ -1,10 +1,10 @@
+---
 tasks:
   - before: |
       sudo apt update
       echo "Y" | sudo apt install awscli
       aws configure --profile bot-tlh set aws_access_key_id $AWS_ACCESS_KEY_ID; aws configure --profile bot-tlh set aws_secret_access_key $AWS_SECRET_ACCESS_KEY; aws configure --profile bot-tlh set default.region $AWS_DEFAULT_REGION
       echo "Y" | sudo apt install s3fs
-      
   - init: |
       echo 'TODO: build project'
       sudo apt update
@@ -18,8 +18,8 @@ tasks:
       ./podenv.sh
       sudo curl https://mrmxf.com/get/clog -o /usr/local/bin/clog ; sudo chmod +x /usr/local/bin/clog # to run: curl https://mrmxf.com/get/clogbin.sh | bash
 
-#sudo apt install s3fs
+# sudo apt install s3fs
 # pip3 install --upgrade ascmhl
-#go install -v golang.org/x/tools/cmd/godoc@latest
-#go install golang.org/x/vuln/cmd/govulncheck@latest
-#govulncheck ./...
+# go install -v golang.org/x/tools/cmd/godoc@latest
+# go install golang.org/x/vuln/cmd/govulncheck@latest
+# govulncheck ./...

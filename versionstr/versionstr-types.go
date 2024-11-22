@@ -15,7 +15,7 @@ import (
 // build the executable like this:
 // GOOS=$OS GOARCH=$CPU go build -ldflags "-X main.LDos=$OS -X main.LDcpu=$CPU  -X main.LDcommit=$ID -X main.LDdate=$DT -X main.LDappname=$APP"  -o tmp/exefile
 
-//to use in your code:
+// to use in your code:
 // ```
 //	package main
 //

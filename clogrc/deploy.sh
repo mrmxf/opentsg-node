@@ -11,10 +11,10 @@ source $GITPOD_REPO_ROOT/clogrc/core/inc.sh
 fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF $(basename $0)"
 # ------------------------------------------------------------------------------
 
- CACHE="s3://mmh-cache"
-   BOT=$MM_BOT
+CACHE="s3://mmh-cache"
+BOT=$MM_BOT
 BRANCH="staging"
-  REPO=$(basename $GITPOD_REPO_ROOT)
+REPO=$(basename $GITPOD_REPO_ROOT)
 
 SRC="opentpg + libs"
 
@@ -41,15 +41,14 @@ fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) create$cF _lx$EXE-so.zi
 zip -j _lx$EXE-so.zip lib/*
 
 fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF _lx$EXE-so.zip"
-aws s3 cp              ./_lx$EXE-so.zip           s3://mmh-cache/bot-bdh/staging/get/_lx$EXE-so.zip
+aws s3 cp ./_lx$EXE-so.zip s3://mmh-cache/bot-bdh/staging/get/_lx$EXE-so.zip
 
 fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF removing .zip"
 rm _lx$EXE-so.zip
 
-
 fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF tpg binaries"
-aws s3 cp              ./_la$EXE                   s3://mmh-cache/bot-bdh/staging/get/_la$EXE
-aws s3 cp              ./_lx$EXE                   s3://mmh-cache/bot-bdh/staging/get/_lx$EXE
-aws s3 cp              ./_win$EXE.exe              s3://mmh-cache/bot-bdh/staging/get/_win$EXE.exe
+aws s3 cp ./_la$EXE s3://mmh-cache/bot-bdh/staging/get/_la$EXE
+aws s3 cp ./_lx$EXE s3://mmh-cache/bot-bdh/staging/get/_lx$EXE
+aws s3 cp ./_win$EXE.exe s3://mmh-cache/bot-bdh/staging/get/_win$EXE.exe
 
-aws s3 cp              ./clogrc/tpg-installer.sh     s3://mmh-cache/bot-bdh/staging/get/$EXE
+aws s3 cp ./clogrc/tpg-installer.sh s3://mmh-cache/bot-bdh/staging/get/$EXE

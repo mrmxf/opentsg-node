@@ -3,13 +3,16 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log/slog"
 	"time"
 
+	gonanoid "github.com/matoous/go-nanoid"
 	"github.com/mrmxf/opentsg-node/versionstr"
 
-	"github.com/mrmxf/opentsg-modules/opentsg-core/tpg"
-
 	errhandle "github.com/mrmxf/opentsg-modules/opentsg-core/errHandle"
+
+	"github.com/mrmxf/opentsg-modules/opentsg-core/tsg"
+	opentsgwidgets "github.com/mrmxf/opentsg-modules/opentsg-widgets"
 )
 
 // dummy data to be overriden by linker injection for production
@@ -28,12 +31,13 @@ func main() {
 		panic(err)
 	}
 
-	//bring in the input file
-	configfile := flag.String("c", "", "config file location")                  //default values as nothing
-	debug := flag.Bool("debug", false, "Debug mode on or off for saving files") //default values as false
+	// bring in the input file
+	configfile := flag.String("c", "", "config file location") // default values as nothing
+	debug := flag.Bool("debug", false, "Debug mode on or off") // default values as false
 	profile := flag.String("profile", "", "aws profile to be used")
+	jid := flag.String("jobid", gonanoid.MustID(16), "the opentsg job id")
 	outputmnt := flag.String("output", "", "extensions to all files to be saved")
-	outputLog := flag.String("log", "", "the type of log to be used")
+	outputLog := flag.String("log", "", "the output destination of the log")
 	doVersion := flag.Bool("version", false, "return the version information and exit")
 	doNote := flag.Bool("note", false, "report this version's deployment note")
 	doShortVersion := flag.Bool("v", false, "return the short version information and exit")
@@ -62,20 +66,25 @@ func main() {
 	commandInputs := *configfile
 
 	// Import the file to generate open tpg
-	tpg, configErr := tpg.FileImport(commandInputs, *profile, *debug, myFlags...)
+	otsg, configErr := tsg.BuildOpenTSG(commandInputs, *profile, *debug, &tsg.RunnerConfiguration{RunnerCount: 1, ProfilerEnabled: true}, myFlags...)
 
 	logs := errhandle.LogInit(*outputLog, *outputmnt)
 	// return the config error or start the program
 	if configErr != nil {
 		// Show the version of this build
-		logs.PrintErrorMessage("F_CONFIG_OPENTPG_", configErr, true) // always make true for config errors
+		logs.PrintErrorMessage("F_CONFIG_OPENTSG_", configErr, true) // always make true for config errors
 		logs.LogFlush()
 	} else {
+
 		// run opentsg
-		tpg.Draw(*debug, *outputmnt, *outputLog)
+		opentsgwidgets.AddBuiltinWidgets(otsg)
+		tsg.AddBaseEncoders(otsg)
+		tsg.LogToFile(otsg, slog.HandlerOptions{Level: slog.LevelDebug}, "./logs/", *jid)
+
+		otsg.Run(*outputmnt)
 	}
 	elapsed := time.Since(start)
-	fmt.Printf("tpg took %s to run\n", elapsed)
+	fmt.Printf("tsg took %s to run\n", elapsed)
 
 }
 
