@@ -1,7 +1,7 @@
 {
     "type": "builtin.canvasoptions",
     "name": [
-        "ebu{{framenumber}}.png",  "ebu{{framenumber}}.tiff"
+        "./ebu/ebu{{framenumber}}.png"
     ],
     "frameSize": {
         "w": 3840,
