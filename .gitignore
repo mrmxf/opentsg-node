@@ -43,5 +43,8 @@ mnt/
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# linter output 
+megalinter-reports/
+
 # Test binary, built with `go test -c`
 *.test

@@ -1,8 +1,8 @@
 {
     "type":"builtin.zoneplate",
-    "platetype": "sweep" ,
+    "plateType": "sweep" ,
     "angle" : "π*1/2",
-    "startcolor" : "white",
+    "startColor" : "white",
     "mask":"circle",
     "grid": {
       "location": 

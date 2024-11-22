@@ -18,8 +18,8 @@ SRC=lnx-otsg
 ARM=lar-otsg
 
 if [[ "aarch64" == $(uname -m) ]]; then
-  # ARM architecture
-  SRC=$ARM
+	# ARM architecture
+	SRC=$ARM
 fi
 
 # ------------------------------------------------------------------------------

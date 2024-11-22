@@ -1,25 +1,17 @@
 package main
 
-import (
-	"log"
-	"os"
-	"testing"
-
-	"github.com/mrmxf/opentsg-modules/opentsg-core/tpg"
-)
-
 // go test -bench=. -benchtime=40s
-
+/*
 func BenchmarkNRGBA64(b *testing.B) {
-	//this section is to remove the stdout clogging up the bench output
+	// this section is to remove the stdout clogging up the bench output
 	_, w, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
-	//origStdout := os.Stdout
+	// origStdout := os.Stdout
 	os.Stdout = w
-	opentsg, _ := tpg.FileImport("./ebu/loadergrid.json", "", true)
-	//cont, framenumber, _ := core.FileImport("./ebu/loadergrid.json", "", true)
+	opentsg, _ := tsg.FileImport("./ebu/loadergrid.json", "", true)
+	// cont, framenumber, _ := core.FileImport("./ebu/loadergrid.json", "", true)
 	// run the Fib function b.N times
 	for n := 0; n < b.N; n++ {
 		opentsg.Draw(false, "", "")
@@ -27,19 +19,19 @@ func BenchmarkNRGBA64(b *testing.B) {
 }
 
 func BenchmarkACES(b *testing.B) {
-	//this section is to remove the stdout clogging up the bench output
+	// this section is to remove the stdout clogging up the bench output
 	_, w, err := os.Pipe()
 	if err != nil {
 		log.Fatal(err)
 	}
-	//origStdout := os.Stdout
+	// origStdout := os.Stdout
 	os.Stdout = w
-	opentsg, _ := tpg.FileImport("./ebu/loaderaces.json", "", true)
-	//cont, framenumber, _ := core.FileImport("./ebu/loaderaces.json", "", true)
+	opentsg, _ := tsg.FileImport("./ebu/loaderaces.json", "", true)
+	// cont, framenumber, _ := core.FileImport("./ebu/loaderaces.json", "", true)
 	// run the Fib function b.N times
 	for n := 0; n < b.N; n++ {
 		opentsg.Draw(false, "", "")
-		//framedraw.Draw(cont, framenumber, false, "", "")
+		// framedraw.Draw(cont, framenumber, false, "", "")
 	}
 }
 

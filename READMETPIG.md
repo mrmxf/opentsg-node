@@ -33,7 +33,7 @@ Please make sure you have followed the installation instructions in the README, 
 
 All output from the demo will be saved in the  `tpig/example` folder.
 
-To generate the flat 2d image witn **no** geometry run  `./opentsg-node --c tpig/loadergrid.json --log stdout --debug`. 
+To generate the flat 2d image witn **no** geometry run  `./opentsg-node --c tpig/loadergrid.json --log stdout --debug`.
 This generates the OpenTPG ebu3373 chart, as a flat test pattern.
 
 The output should look like

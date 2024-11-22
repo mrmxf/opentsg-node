@@ -1,6 +1,6 @@
 {
     "type":"builtin.framecounter",
-    "framecounter":true ,
+    "frameCounter":true ,
     "gridPosition":{
         "x":10.5,
         "y":44
@@ -8,6 +8,6 @@
     "grid": {
         "location":  "p1"
     },
-    "fontsize" : 3.75,
-    "backgroundcolor":"#00000000"
+    "fontSize" : 3.75,
+    "backgrounColor":"#00000000"
 }
