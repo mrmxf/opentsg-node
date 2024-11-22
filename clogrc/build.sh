@@ -1,54 +1,80 @@
-#  clog> build
+#!/usr/bin/env bash
+# clog> build
 # short> build & inject metadata into clog
-# extra> build & inject metadata into clog
-#                             _                                       _
-#   ___   _ __   ___   _ _   | |_   ___  __ _   ___   _ _    ___   __| |  ___
-#  / _ \ | '_ \ / -_) | ' \  |  _| (_-< / _` | |___| | ' \  / _ \ / _` | / -_)
-#  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
-#        |_|                            |___/
+# extra> push main executables into tmp/
+#
+#      |                |         o|        |
+# ,---.|    ,---.,---.  |---..   ..|    ,---|
+# |    |    |   ||   |  |   ||   |||    |   |
+# `---'`---'`---'`---|  `---'`---'``---'`---'
+#                `---'
+# ------------------------------------------------------------------------------
+# load build config and script helpers
+[ -f clogrc/_cfg.sh   ] && source clogrc/_cfg.sh
+if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc";fi
 
-[ -f clogrc/common.sh ] && source clogrc/common.sh           # helper functions
-# -----------------------------------------------------------------------------
+fInfo "Building Project$cS $PROJECT"
+clog Check
+[ $? -gt 0 ] && exit 1
+# ------------------------------------------------------------------------------
 
-[ -f clogrc/check.sh ] && source clogrc/check.sh  ignore  # preflight - no warn
-printf "${cT}Project$cS $PROJECT$cX\n"
+# determine local OS & bCPU
+bCPU=amd && case $(uname -m) in arm*) bCPU="arm";; esac
+case "$(uname -s)" in
+   Linux*)  bOSV=Linux;;
+  Darwin*)  bOSV=Mac;;
+        *)  bOSV="untested:$(uname -s)";;
+esac
 
-# -----------------------------------------------------------------------------
+fInfo "build OS $cS${bOSV}$cT on $cH${bCPU}$cT architecture"
+# create linker data info: "commithash|auto-date|suffix|appname|apptitle"
+ldi="$bHASH||$bSUFFIX|$bBASE|OpenTSG"
+# linker data path for the golang semver.SemVerInfo
+ldp="gitlab.com/mrmxf/clog/cloglib/semver.SemVerInfo"
 
-# determine local OS & CPU
-fMachine
-fEcho "Build   on $cS${cOS}$cT with $cK${cPU}$cT architecture"
+# highlight colors
+cLnx="$cC";cMac="$cW";cWin="$cE";cArm="$cS";cAmd="$cH"
+# --- amd ---------------------------------------------------------------------
+ldi="$bHASH|linux|amd64|$bBASE|OpenTSG"
+printf "${cT}Build$cLnx   linux$cAmd amd64$cX size:$cLnx "
+f=tmp/$bBASE-amd-lnx
+GOOS="linux" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o  $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
-# export the commit ID & date & type for the build
-CID=$(git rev-list -1 HEAD)
-DATE=$(date +%F)
-SemSfx="$( git branch --show-current )"
-[[ "main" == "$SemSfx" ]] && SemSfx=""
+printf "${cT}Build$cMac  darwin$cAmd amd64$cX size:$cMac "
+ldi="$bHASH|darwin|amd64|$bBASE|OpenTSG"
+f=tmp/$bBASE-amd-mac
+GOOS="darwin" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o  $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
+printf "${cT}Build$cE windows$cAmd amd64$cX size:$cE "
+f=tmp/$bBASE-amd-win.exe
+ldi="$bHASH|windows|amd64|$bBASE|OpenTSG"
+GOOS="windows" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
-# load in the arrays of variants & the EXE & EXElocal variables
-source clogrc/build-variants.sh
-APP="$EXE"
+# --- arm ---------------------------------------------------------------------
+printf "${cT}Build$cLnx   linux$cArm arm64$cX size:$cLnx "
+f=tmp/$bBASE-arm-lnx
+ldi="$bHASH|linux|arm64|$bBASE|OpenTSG"
+GOOS="linux" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
-# build the artifacts
-mkdir -p tmp
-LEN=${#gOS[@]}
-fInfo "Building$cI $LEN$cT outputs"
+printf "${cT}Build$cMac  darwin$cArm arm64$cX size:$cMac "
+f=tmp/$bBASE-arm-mac
+ldi="$bHASH|darwin|arm64|$bBASE|OpenTSG"
+GOOS="darwin" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
-for i in $(seq 1 $LEN); do
-  OS=${gOS[$i]}
-  CPU=${gARCH[$i]}
-  fInfo "Build   ${cVER[$i]}${FILE[$i]}${cT} ($OS for $CPU) with metadata"
-  LDF=("-X main.LDos=$OS")
-  LDF+=" -X main.LDcpu=$CPU"
-  LDF+=" -X main.LDcommit=$CID"
-  LDF+=" -X main.LDdate=$DATE"
-  LDF+=" -X main.LDsuffix=$SemSfx"
-  LDF+=" -X main.LDappname=$APP"
-  LDFLAGS=$(printf " %s" "${LDF[@]}") # make a long linker loader string
-  # printf "LINK: $LDFLAGS\n"
-  GOOS=$OS GOARCH=$CPU go build -ldflags "$LDFLAGS" -o tmp/${FILE[$i]}
-done
+printf "${cT}Build$cE windows$cArm arm64$cX size:$cE "
+f=tmp/$bBASE-arm-win.exe
+ldi="$bHASH|windows|arm64|$bBASE|OpenTSG"
+GOOS="windows" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
+du --apparent-size --block-size=M $f; printf "$cX"
 
-fInfo "To have a local $cS${cOS}$cT build on $cK${cPU}$cT, you might want:"
-fInfo "   $cC rm $cF ./$EXE $cC && ln $cF $EXElocal ./$EXE $cX"
+# printf "${cT}Build$cS wasm$cS arm64$cX$cS"
+#f=tmp/wasm-$bBASE
+# GOOS="js" GOARCH="wasm" go build -ldflags "-X $ldp=$ldi" -o  $f
+# du --apparent-size --block-size=1 $f; printf "$cX"
+
+fInfo "${cT}All built to the$cF tmp/$cT folder\n"

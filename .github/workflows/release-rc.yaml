@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - "rc"
+permissions: read-all
 
 jobs:
 

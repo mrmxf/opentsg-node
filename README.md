@@ -2,7 +2,7 @@
 
 The rendering node of the open source test pattern generator.
 
-## Running opentsg-node Via SSH 
+## Running opentsg-node Via SSH
 
 opentsg-node is designed to be run on a cloud compute instance,  while test
 pattern configuration files are made on a low powered gitpod or similar
@@ -556,10 +556,10 @@ The ramps factory has the type "builtin.ramps" and contains the following keys f
 
 
 - depth - the bit depth that the inital rgb values for white,black and ramp start are specified for
-    - 12 bit has a range of 0-4095
-    - 10 bit has a range of 0-1023
-    - 8 bit has a range of 0-255
-    - 4 bit has a range of 0-15
+  - 12 bit has a range of 0-4095
+  - 10 bit has a range of 0-1023
+  - 8 bit has a range of 0-255
+  - 4 bit has a range of 0-15
 ```
 "depth": 8
 ```
@@ -602,21 +602,21 @@ Or
 ```
 
 - stripes contains all of the objects for generating the ramps. It contains objects for the header, stripes and interstripes.
-   - groupHeader contains the  color and height properties of the group header.
-       - color is an array of strings for the color, only one color is allowed.
-       - height is the height of the group relative the stripes and stripe dividers.
+  - groupHeader contains the  color and height properties of the group header.
+    - color is an array of strings for the color, only one color is allowed.
+    - height is the height of the group relative the stripes and stripe dividers.
   - interstripes contains the  color and height properties of the interstripe dividers.
-       - color is an array of strings of the color, if more than one color is given the divider alternates through the colors based on the pixel change of the next stripes.
-       - height is the height of the stripedividers relative the stripes and header.
-   - ramps contains the height, bitdepth, fill type and labels of the stripes.
-      - fill can be gradient or constant. If the gradient is used then the ramp will gradually change colour across the iamge.
-      - bit depth is an array of the stripe bit depth for each group. The length of this array matches the number of stripes per group. Only 4,8,10 and 12 bit depths can be chosen.
-      - labels is an array of strings to be placed on each stripe. Each label index matches the bitdepth index
-      - height is the height of the stripes relative the groupheader and stripe dividers
+    - color is an array of strings of the color, if more than one color is given the divider alternates through the colors based on the pixel change of the next stripes.
+    - height is the height of the stripedividers relative the stripes and header.
+  - ramps contains the height, bitdepth, fill type and labels of the stripes.
+    - fill can be gradient or constant. If the gradient is used then the ramp will gradually change colour across the iamge.
+    - bit depth is an array of the stripe bit depth for each group. The length of this array matches the number of stripes per group. Only 4,8,10 and 12 bit depths can be chosen.
+    - labels is an array of strings to be placed on each stripe. Each label index matches the bitdepth index
+    - height is the height of the stripes relative the groupheader and stripe dividers
   - Rampgroups contains color, start position and direction of the gradient of the stripes. Each object is a group of stripes. The stripes are added in alphabetical order of the names. In the example below the order is "bluePos","grayNeg","greenPos" and "redPos".
-     - color is the color of the stripe
-     - direction is if the ramp moves from bright to dark (-1), or dark to bright (1)
-     - rampstart is the rgb value of the stripe to start on. This matches the bitdepth of the depth variable. e.g. 12 bit depth gives a rampstart range from 0 to 4095
+    - color is the color of the stripe
+    - direction is if the ramp moves from bright to dark (-1), or dark to bright (1)
+    - rampstart is the rgb value of the stripe to start on. This matches the bitdepth of the depth variable. e.g. 12 bit depth gives a rampstart range from 0 to 4095
 ```
  "stripes": {
         "groupHeader": {
@@ -919,13 +919,13 @@ The widgets and factories are declared in the create array of a factory, where e
 Open tpg runs in two stages:
 
 - Init
-    - parse the the first object as a factory.
-    - Open the jsons declared in include and sort if these are widgets or more factories. If it is a factory then it recurivley repeats the process until all inlcude files are opened,files are opened in the order they are declared.
+  - parse the the first object as a factory.
+  - Open the jsons declared in include and sort if these are widgets or more factories. If it is a factory then it recurivley repeats the process until all inlcude files are opened,files are opened in the order they are declared.
 - Run
-    - Run the frame position of create in the init file. This generates widgets in the array order they were declared in the factory. With the arrays in depth first order.
-    - Within each factory the generate objects array of a factory is run first, then the create array.
-    - Generate generates json widgets based on the data input and only updates the specified fields. The names for each depth are given by the user and generated based on their array positions.
-    - Create objects either run recursively to another factory or generate a widget with the specified map updates.
+  - Run the frame position of create in the init file. This generates widgets in the array order they were declared in the factory. With the arrays in depth first order.
+  - Within each factory the generate objects array of a factory is run first, then the create array.
+  - Generate generates json widgets based on the data input and only updates the specified fields. The names for each depth are given by the user and generated based on their array positions.
+  - Create objects either run recursively to another factory or generate a widget with the specified map updates.
 
 
 ### Z order

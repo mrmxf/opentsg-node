@@ -9,7 +9,7 @@ With a main aim of reducing the number of widgets being declared in factories.
 The generate field always runs before the create field, in every factory json.
 They do **not** take precedence over create fields in parent factories.
 
-Generate works by taking a base widget and using it to generate a new widget, 
+Generate works by taking a base widget and using it to generate a new widget,
 replacing specified
 
 fields in the base widget with the values from the data.
@@ -91,7 +91,7 @@ in the generated widget.
 
 The dimension allow ndimensons of to data be placed in a single dimension array.
 The dimensions in the demo mean theres a 3 dimensional dot path, which consists of
-5 in the base dimension, eah one of these has 4 further children and those 4 children 
+5 in the base dimension, eah one of these has 4 further children and those 4 children
 have a further 3 each.
 This results in 60 data points in total. These are stored in a depth first order in the data.
 

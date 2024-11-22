@@ -22,24 +22,32 @@ MSG=$($EXElocal --note)
 LOCAL=$(git tag | grep $TAG)
 REMOTE=$(git ls-remote --tags origin | egrep -o "v[0-9]+\.[0-9]+\.[0-9]+" | head -1)
 
-   BOT=$MM_BOT
+BOT=$MM_BOT
 BRANCH="staging"
- CACHE="s3://mmh-cache"
-  REPO=$PROJECT
+CACHE="s3://mmh-cache"
+REPO=$PROJECT
 
 SRC="tmp/<build articacts>"
 DST="s3://mmh-cache/bot-bdh/staging/get/otsgbin"
 
-fYnInput () {
-  while true; do
-  printf "$1"
-  read response
-  case $response in
-    [Yy]* ) printf "$cS yes$cX " ; RES=0 ; break;;
-    [Nn]* ) printf "$cE no$cX"   ; RES=1 ; break;;
-    * ) fWarning "${cE}Please enter$cC y$cE or$cC n$cE.${cX}";;
-  esac
-done
+fYnInput() {
+	while true; do
+		printf "$1"
+		read response
+		case $response in
+		[Yy]*)
+			printf "$cS yes$cX "
+			RES=0
+			break
+			;;
+		[Nn]*)
+			printf "$cE no$cX"
+			RES=1
+			break
+			;;
+		*) fWarning "${cE}Please enter$cC y$cE or$cC n$cE.${cX}" ;;
+		esac
+	done
 }
 # ------------------------------------------------------------------------------
 
@@ -58,8 +66,7 @@ fYnInput "\nUpload $cE${#gOS[@]}$cT files to $DST? yn "
 
 echo
 #iterate using the same index ($i) for each array
-for (( i=0; i<${#gOS[@]}; i++ ));
-do
-  fInfo "Staging ${cVER[$i]}tmp/${FILE[$i]}${cT}"
-  aws   s3 cp  --quiet --color on ./tmp/${FILE[$i]}   $DST/${FILE[$i]}
+for ((i = 0; i < ${#gOS[@]}; i++)); do
+	fInfo "Staging ${cVER[$i]}tmp/${FILE[$i]}${cT}"
+	aws s3 cp --quiet --color on ./tmp/${FILE[$i]} $DST/${FILE[$i]}
 done
