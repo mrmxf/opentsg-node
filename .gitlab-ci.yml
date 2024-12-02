@@ -27,6 +27,7 @@ workflow:
 
 stages:
   - build
+  - list
   - deploy
   # - hook
 
@@ -53,33 +54,19 @@ bark:
     - curl https://mrmxf.com/get/clog | bash
     - clog build
 
+
+# --- deploy ------------------------------------------------------------------
+lister:
+  stage: list
+  script:
+    # create env from upstream dependencies
+    - ls ./tmp -all
 # --- deploy ------------------------------------------------------------------
 deploy:
   stage: deploy
-  image: docker:$vDOCKER_IMAGE
-  services:
-    - docker:$vDOCKER_IMAGE-dind
-  before_script:
-    - echo "$MRX_DOCKER_PWD" | docker login -u "$MRX_DOCKER_USR" --password-stdin
-    - docker info
   script:
     # create env from upstream dependencies
-    - source clogrc/_cfg.sh
-    - echo "Deploying website version ($vCODE) from branch ($BRANCH)"
-
-    - echo "Logged into docker($MRX_DOCKER_USR) via gitlab($GITLAB_USER_LOGIN)"
-    # Gitlab is not for production builds. used a tag like dev1.2.3 for this
-    - TARGETamd="$MRX_DOCKER_NS/$IMAGE-amd:dev$vCODE"
-    - TARGETarm="$MRX_DOCKER_NS/$IMAGE-arm:dev$vCODE"
-
-    # - docker buildx build -t $TARGET --push --platform linux/amd64,linux/arm64,linux/arm/v7 .
-    - echo "Build & push to $TARGETamd"
-    - docker buildx build -t "$TARGETamd" --push --platform linux/amd64 .
-    - docker buildx imagetools inspect "$TARGETamd"
-
-    - echo "Build & push to $TARGETarm"
-    - docker buildx build -t "$TARGETarm" --push --platform linux/arm64 .
-    - docker buildx imagetools inspect "$TARGETarm"
+    - clog deploy
 
 # --- hook ------------------------------------------------------------------
 hook:
