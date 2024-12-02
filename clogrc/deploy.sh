@@ -1,54 +1,68 @@
-# usage> stage
-# short> execute stage.sh to build & upload {{REPO}} to staging
-# long>  execute stage.sh to build & upload {{REPO}} to staging. No other option needed. Edit script to configure upload.
-#                             _
-#   ___   _ __   ___   _ _   | |_   _ __   __ _
-#  / _ \ | '_ \ / -_) | ' \  |  _| | '_ \ / _` |
-#  \___/ | .__/ \___| |_||_|  \__| | .__/ \__, |
-#        |_|                       |_|    |___/
+#  clog> deploy
+# short> push executables to s3
+# extra> Edit script to configure upload.
+#
+#     |          |
+# ,---|,---.,---.|    ,---.,   .
+# |   ||---'|   ||    |   ||   |
+# `---'`---'|---'`---'`---'`---|
+#           |              `---'
+# bitbucket instructions https://support.atlassian.com/bitbucket-cloud/docs/deploy-build-artifacts-to-bitbucket-downloads/
+# ------------------------------------------------------------------------------
+# load build config and script helpers
+[ -f clogrc/_cfg.sh   ] && source clogrc/_cfg.sh
+if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc";fi
 
-source $GITPOD_REPO_ROOT/clogrc/core/inc.sh
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF $(basename $0)"
+fInfo "Building Project$cS $bPROJECT$cT (use clog deploy continue to ignore errors)"
+
+clog Check
+clog Check deploy
+[ $? -gt 0 ] && [ -z "$1" ] && echo "clog Check failed aborting ..." && exit 1
 # ------------------------------------------------------------------------------
 
-CACHE="s3://mmh-cache"
-BOT=$MM_BOT
-BRANCH="staging"
-REPO=$(basename $GITPOD_REPO_ROOT)
+# highlight colors
+cLnx="$cC";cMac="$cW";cWin="$cE";cArm="$cS";cAmd="$cH"
 
-SRC="opentpg + libs"
+# deploy a tagged release or "clogrc" or " "clogdev"
+VV="$vCODE"
+shVV=""
+BRANCH="$(clog git branch)"
+[[ "$BRANCH" != "main" ]] && VV="dev" && shVV="$VV"
+[[ "$BRACH" == "rc" ]] && VV="rc" && shVV="$VV"
+bPATH="$bucket/clogbin/v$VV"
+fInfo "Deploying to $cF$bPATH"
 
-OPT="--include \"*\" "
-ACTION=Upload
+fInfo "Making build script for version$cW $VV$cT in$cF tmp/openTSG$shVV"
+clog Cat core/template/deploy-clog-template.sh | sed  -r "s/CLOGVERSIONKEY/$VV/" > ./tmp/openTSG$shVV
 
-# do preflight checks & abort if user does not want to continue
-source $GITPOD_REPO_ROOT/clogrc/core/s3sync.sh
-fValidate
-# ------------------------------------------------------------------------------
 
-#define the folders to sync(upload) - one per line
-# SYNCS=(
-#   "$OPT site/folder1   $CACHE/$BOT/$BRANCH/$REPO/folder1"
-#   "$OPT site/folder2   $CACHE/$BOT/$BRANCH/$REPO/folder2"
-# )
 
-# do sync
-# fSync
 
-EXE=msgtsg
-# do anything remedial like single file copies here....
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) create$cF _lx$EXE-so.zip"
-zip -j _lx$EXE-so.zip lib/*
+fUpload() {
+  SRC="./tmp/$1"
+  src="$cF./tmp/$4$1"
+  DST="$2/$1"
+  dst="$cF$2/$3$1"
+  fInfo "Uploading from $src to $dst$cX"
+  aws s3 cp  --color on $SRC $DST
+}
 
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF _lx$EXE-so.zip"
-aws s3 cp ./_lx$EXE-so.zip s3://mmh-cache/bot-bdh/staging/get/_lx$EXE-so.zip
+## extract and upload the licenses
+clog install go-licenses
+clog get licenses
+fUpload ./tmp/go-licenses-cli "$bPATH"
 
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF removing .zip"
-rm _lx$EXE-so.zip
+fUpload "$bBase-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
+fUpload "$bBase-amd-mac"     "$bPATH" "$cMac" "$cAmd"
+fUpload "$bBase-amd-win.exe" "$bPATH" "$cWin" "$cAmd"
 
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF tpg binaries"
-aws s3 cp ./_la$EXE s3://mmh-cache/bot-bdh/staging/get/_la$EXE
-aws s3 cp ./_lx$EXE s3://mmh-cache/bot-bdh/staging/get/_lx$EXE
-aws s3 cp ./_win$EXE.exe s3://mmh-cache/bot-bdh/staging/get/_win$EXE.exe
+fUpload "$bBase-arm-lnx"     "$bPATH" "$cLnx" "$cArm"
+fUpload "$bBase-arm-mac"     "$bPATH" "$cMac" "$cArm"
+fUpload "$bBase-arm-win.exe" "$bPATH" "$cWin" "$cArm"
 
-aws s3 cp ./clogrc/tpg-installer.sh s3://mmh-cache/bot-bdh/staging/get/$EXE
+# this doesn't upload anything
+# fUpload "openTSG$shVV" "$CLOG_BUCKET"
+echo
+fInfo "You can test this version with one of ..."
+fInfo "    $cC curl$cF https://mrmxf.com/${cC}get$cF/${cW}openTSG$shVV$cT  |$cC bash"
+fInfo "    $cC curl$cF https://mrmxf.com/${cC}get$cF/${cW}openTSG$shVV$cT  |$cC zsh"

@@ -49,6 +49,7 @@ clog:
     stashId: CLOG_STASH_ID
     gitHubUser: GHUSR
     gitSshPublicKey: GIT_SSH_PUBLIC_KEY
+    tsgBucket : OTSG_S3_BUCKET
   homeFolder: set at runtime
   # clog Jumbo --help to see the full font list
   jumbo:
@@ -85,7 +86,13 @@ check:
   #    .report.error-if
   #    .report.error-group-NAME
   #    .dependencies                - report the status of dependencies
-
+  deploy: 
+    report:
+      - go-license: clog install check go-licenses 
+      - aws: clog install check aws
+      - warn-if:
+        - go-license != true
+        
   default-core:
     report:
       - tag-ref: clog git vcode
@@ -172,6 +179,10 @@ docker:
 #          clog watch
 #    con
 snippets:
+  
+  get: 
+    bucket: echo "$OTSG_S3_BUCKET"
+    licenses: go-licenses save "github.com/mrmxf/opentsg-node" --save_path="./tmp/go-licenses-cli" 2> errors
   # this is a command snippet because it takes a while to complete
   walk-git-repos: |
     source <( clog Core Crayon ) # set color strings
@@ -203,7 +214,7 @@ snippets:
     # --- git message snippets:  clog git tag <snippet> -----------------------------
     message:
       latest: git log HEAD | head -5 | tail -1 | xargs
-      ref: echo 'set "clog.config.yaml/shellsnippets.git-message-ref" to a release message in your project'
+      ref: git log -1 --pretty=%B
     origin: git config --get remote.origin.url
     # --- git tag snippets:  clog git tag <snippet> -----------------------------
     tag:
@@ -231,7 +242,7 @@ snippets:
       behind: if [ "$(git status|grep -oE '(merge the remote)')" ];then echo "Branch behind - do pull";exit 1;else echo "ok";fi
       clean: if [ "$(git status|grep -oE '(working tree clean)')" ];then echo "ok";else echo "Working tree not clean";exit 1;fi
     unstaged: if [ "$(git status|grep -oE '(Changes not staged)')" ];then echo "Commit unstaged changes";exit 1; else echo "ok";fi
-    vcode: echo 'set "clog.config.yaml/snippets.git.vcode" to the project's reference semver'
+    vcode: cat ./versionstr/releases.yml | grep version  | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'
     # -------------------------------------------------------------------------
     # --- install snippets --------------------------------------------------
     #   clog install clog  # tool install thyself
@@ -239,6 +250,8 @@ snippets:
     # --- install check snippets ----------------------------------------------------
     # clog install check golang && echo "Yay, found it" || clog install golang
     check:
+      go-licenses: "go-licenses version >/dev/null 2>&1"
+      aws: "aws version >/dev/null 2>&1"
       clog: "clog version >/dev/null 2>&1"
       golang: "go version >/dev/null 2>&1"
       godoc: "which godoc >/dev/null 2>&1"
@@ -246,6 +259,7 @@ snippets:
       glab: "glab version >/dev/null 2>&1"
       gh: "gh --version >/dev/null 2>&1"
     # install snippets --------------------------------------------------------
+    go-licenses: "go install github.com/google/go-licenses@latest"
     clog: "curl https://mrmxf.com/get/clog | bash"
     clogdev: "curl https://mrmxf.com/get/clogdev | bash"
     clogrc: "curl https://mrmxf.com/get/clogrc | bash"
