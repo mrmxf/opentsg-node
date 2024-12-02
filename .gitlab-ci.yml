@@ -27,7 +27,6 @@ workflow:
 
 stages:
   - build
-  - list
   - deploy
   # - hook
 
@@ -54,26 +53,11 @@ bark:
     - curl https://mrmxf.com/get/clog | bash
     - clog build
 
-
-# --- deploy ------------------------------------------------------------------
-lister:
-  stage: list
-  script:
-    # create env from upstream dependencies
-    - ls ./tmp -all
 # --- deploy ------------------------------------------------------------------
 deploy:
   stage: deploy
   script:
     # create env from upstream dependencies
+    - curl https://mrmxf.com/get/clog | bash 
     - clog deploy
 
-# --- hook ------------------------------------------------------------------
-hook:
-  stage: deploy
-  needs: [deploy]
-  script:
-    - echo "fire the CI/CD hook to the website signalling no errors"
-    - curl "https://staging.metarex.media/a/hook/cicd/gitlab/$MRX_DOCKER_NS/$IMAGE-arm:dev$vCODE"
-    - echo "fire the CI/CD hook to the website signalling no errors"
-    - curl "https://staging.metarex.media/a/hook/cicd/gitlab/$MRX_DOCKER_NS/$IMAGE-amd:dev$vCODE"
