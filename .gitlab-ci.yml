@@ -50,7 +50,7 @@ bark:
     # print each group with a line separator
     - for g in "${gg[@]}"; do echo " "; for n in ${!g}; do printf "%s %36s = %s\n" $barkId "\$$n" "${!n}"; done; done
     # install clog
-    - curl https://mrmxf.com/get/clog | bash
+    - curl https://mrmxf.com/get/clogdev | bash
     - clog build
 
 # --- deploy ------------------------------------------------------------------
@@ -58,6 +58,6 @@ deploy:
   stage: deploy
   script:
     # create env from upstream dependencies
-    - curl https://mrmxf.com/get/clog | bash 
+    - curl https://mrmxf.com/get/clogdev | bash 
     - clog deploy
 
