@@ -30,7 +30,7 @@ esac
 
 fInfo "build OS $cS${bOSV}$cT on $cH${bCPU}$cT architecture"
 # create linker data info: "commithash|auto-date|suffix|appname|apptitle"
-ldi="$bHASH||$bSUFFIX|$bBASE|OpenTSG"
+ldi="$bHASH||$bSUFFIX|$bBase|OpenTSG"
 
 
 
@@ -41,7 +41,7 @@ date=$(date '+%Y-%m-%d')
 ldi="-X main.LDos=linux -X main.LDcpu=amd64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
 
 printf "${cT}Build$cLnx linux$cAmd amd64$cX size:$cLnx "
-f=tmp/$bBASE-amd-lnx
+f=tmp/$bBase-amd-lnx
 
 # go build -ldflags -X main.LDos=linux -X main.LDcpu=amd64
 
@@ -50,37 +50,37 @@ du --apparent-size --block-size=M $f; printf "$cX"
 
 printf "${cT}Build$cMac  darwin$cAmd amd64$cX size:$cMac "
 ldi="-X main.LDos=darwin -X main.LDcpu=amd64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
-f=tmp/$bBASE-amd-mac
+f=tmp/$bBase-amd-mac
 GOOS="darwin" GOARCH="amd64" go build -ldflags "$ldi" -o  $f
 du --apparent-size --block-size=M $f; printf "$cX"
 
 printf "${cT}Build$cE windows$cAmd amd64$cX size:$cE "
-f=tmp/$bBASE-amd-win.exe
+f=tmp/$bBase-amd-win.exe
 ldi="-X main.LDos=windows -X main.LDcpu=amd64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
 GOOS="windows" GOARCH="amd64" go build -ldflags "$ldi" -o $f
 du --apparent-size --block-size=M $f; printf "$cX"
 
 # --- arm ---------------------------------------------------------------------
 printf "${cT}Build$cLnx   linux$cArm arm64$cX size:$cLnx "
-f=tmp/$bBASE-arm-lnx
+f=tmp/$bBase-arm-lnx
 ldi="-X main.LDos=linux -X main.LDcpu=arm64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
 GOOS="linux" GOARCH="arm64" go build -ldflags "$ldi" -o  $f
 du --apparent-size --block-size=M $f; printf "$cX"
 
 printf "${cT}Build$cMac  darwin$cArm arm64$cX size:$cMac "
-f=tmp/$bBASE-arm-mac
+f=tmp/$bBase-arm-mac
 ldi="-X main.LDos=darwin -X main.LDcpu=arm64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
 GOOS="darwin" GOARCH="arm64" go build -ldflags "$ldi" -o  $f
 du --apparent-size --block-size=M $f; printf "$cX"
 
 printf "${cT}Build$cE windows$cArm arm64$cX size:$cE "
-f=tmp/$bBASE-arm-win.exe
+f=tmp/$bBase-arm-win.exe
 ldi="-X main.LDos=windows -X main.LDcpu=arm64 -X main.LDcommit=$bHASH -X main.LDdate=$date -X main.LDappname=OpenTSG"
 GOOS="windows" GOARCH="arm64" go build -ldflags "$ldi" -o  $f
 du --apparent-size --block-size=M $f; printf "$cX"
 
 # printf "${cT}Build$cS wasm$cS arm64$cX$cS"
-#f=tmp/wasm-$bBASE
+#f=tmp/wasm-$bBase
 # GOOS="js" GOARCH="wasm" go build -ldflags "-X $ldp=$ldi" -o  $f
 # du --apparent-size --block-size=1 $f; printf "$cX"
 

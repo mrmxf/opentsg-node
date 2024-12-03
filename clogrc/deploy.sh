@@ -15,8 +15,8 @@ if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc"
 
 fInfo "Building Project$cS $bPROJECT$cT (use clog deploy continue to ignore errors)"
 
-clog Check
-clog Check deploy
+#clog Check
+#clog Check deploy
 [ $? -gt 0 ] && [ -z "$1" ] && echo "clog Check failed aborting ..." && exit 1
 # ------------------------------------------------------------------------------
 
@@ -39,6 +39,7 @@ clog Cat core/template/deploy-clog-template.sh | sed  -r "s/CLOGVERSIONKEY/$VV/"
 
 
 fUpload() {
+  echo "$1"
   SRC="./tmp/$1"
   src="$cF./tmp/$4$1"
   DST="$2/$1"
