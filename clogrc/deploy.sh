@@ -15,8 +15,8 @@ if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc"
 
 fInfo "Building Project$cS $bPROJECT$cT (use clog deploy continue to ignore errors)"
 
-#clog Check
-#clog Check deploy
+clog Check
+clog Check deploy
 [ $? -gt 0 ] && [ -z "$1" ] && echo "clog Check failed aborting ..." && exit 1
 # ------------------------------------------------------------------------------
 
