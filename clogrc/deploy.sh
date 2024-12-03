@@ -46,7 +46,7 @@ fUpload() {
   dst="$cF$2/$3$1"
   fInfo "Uploading from $src to $dst$cX"
 
-  if ! aws s3 cp  --color on $SRC $DST; then
+  if ! aws s3 cp  --color on $SRC $DST --recursive; then
     exit 2
   fi
   
