@@ -89,6 +89,7 @@ check:
   deploy: 
     report:
       - go-license: clog install check go-licenses 
+      - update: clog install update
       - aws: clog install check aws
       - inst: clog install aws
       - warn-if:
@@ -182,7 +183,7 @@ docker:
 snippets:
   
   get: 
-    bucket: echo "s3://mmh-cache/bot-tlh/dev/"
+    bucket: echo "s3://mmh-cache/bot-tlh/dev"
     licenses: go-licenses save "github.com/mrmxf/opentsg-node" --save_path="./tmp/go-licenses-cli" 2> errors
   # this is a command snippet because it takes a while to complete
   walk-git-repos: |
@@ -260,6 +261,9 @@ snippets:
       glab: "glab version >/dev/null 2>&1"
       gh: "gh --version >/dev/null 2>&1"
     # install snippets --------------------------------------------------------
+    update: | 
+      apt update -y
+      apt upgrade -y
     aws: |
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       apt install unzip
