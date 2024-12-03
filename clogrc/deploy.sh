@@ -29,7 +29,7 @@ shVV=""
 BRANCH="$(clog git branch)"
 [[ "$BRANCH" != "main" ]] && VV="dev" && shVV="$VV"
 [[ "$BRACH" == "rc" ]] && VV="rc" && shVV="$VV"
-bPATH="$bucket/clogbin/v$VV"
+bPATH="$bucket/tsgbin/v$VV"
 fInfo "Deploying to $cF$bPATH"
 
 fInfo "Making build script for version$cW $VV$cT in$cF tmp/openTSG$shVV"
