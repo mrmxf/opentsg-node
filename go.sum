@@ -78,6 +78,8 @@ github.com/mrmxf/opentsg-mhl v0.4.1-0.20240925105016-88f06c5da0b6 h1:xAzSIKlsUVl
 github.com/mrmxf/opentsg-mhl v0.4.1-0.20240925105016-88f06c5da0b6/go.mod h1:Wo+Kub3BVYE4iMxEpsCu4ZRggh+xIFDyxSi0G/RBSAE=
 github.com/mrmxf/opentsg-modules v0.0.0-20241122145638-9555f7ebfa7b h1:jS2ud0ak1DeHviXi64Ig+FRnmMWN8Gd+XndfF4bZDJo=
 github.com/mrmxf/opentsg-modules v0.0.0-20241122145638-9555f7ebfa7b/go.mod h1:N6lFJ0Y7LnAbwAO4Sz8k8JHEqelf+7CaJLr2c6onLOg=
+github.com/mrmxf/opentsg-modules v0.0.0-20241203084633-36e5fe5ae692 h1:NmwLBtXnFRt0TivD5vFHttIwxIvVimUwm7uX9HibqsM=
+github.com/mrmxf/opentsg-modules v0.0.0-20241203084633-36e5fe5ae692/go.mod h1:N6lFJ0Y7LnAbwAO4Sz8k8JHEqelf+7CaJLr2c6onLOg=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 h1:zYyBkD/k9seD2A7fsi6Oo2LfFZAehjjQMERAvZLEDnQ=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646/go.mod h1:jpp1/29i3P1S/RLdc7JQKbRpFeM1dOBd8T9ki5s+AY8=
 github.com/peterbourgon/mergemap v0.0.1 h1:5/brtSACv34REV0xoYjPQ8JXZnx3nurGt6WInLRwqX4=

@@ -4,7 +4,7 @@ go 1.23.1
 
 require (
 	github.com/matoous/go-nanoid v1.5.1
-	github.com/mrmxf/opentsg-modules v0.0.0-20241122145638-9555f7ebfa7b
+	github.com/mrmxf/opentsg-modules v0.0.0-20241203084633-36e5fe5ae692
 	gopkg.in/yaml.v3 v3.0.1
 )
 

@@ -45,7 +45,14 @@ fUpload() {
   DST="$2/$1"
   dst="$cF$2/$3$1"
   fInfo "Uploading from $src to $dst$cX"
-  aws s3 cp  --color on $SRC $DST
+
+  if ! aws s3 cp  --color on $SRC $DST; then
+    exit 2
+  fi
+  
+
+
+  # return an error if this breaks
 }
 
 ## extract and upload the licenses
@@ -53,7 +60,7 @@ clog install go-licenses
 clog get licenses
 fUpload ./tmp/go-licenses-cli "$bPATH"
 
-fUpload "$bBase-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
+fUpload "$bBAse-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
 fUpload "$bBase-amd-mac"     "$bPATH" "$cMac" "$cAmd"
 fUpload "$bBase-amd-win.exe" "$bPATH" "$cWin" "$cAmd"
 
