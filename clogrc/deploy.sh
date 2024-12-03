@@ -58,9 +58,9 @@ fUpload() {
 ## extract and upload the licenses
 clog install go-licenses
 clog get licenses
-fUpload ./tmp/go-licenses-cli "$bPATH"
+fUpload go-licenses-cli "$bPATH" "" ""
 
-fUpload "$bBAse-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
+fUpload "$bBase-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
 fUpload "$bBase-amd-mac"     "$bPATH" "$cMac" "$cAmd"
 fUpload "$bBase-amd-win.exe" "$bPATH" "$cWin" "$cAmd"
 
