@@ -58,7 +58,10 @@ fUpload() {
 ## extract and upload the licenses
 clog install go-licenses
 clog get licenses
-fUpload go-licenses-cli "$bPATH" "" ""
+# separate folder function
+fInfo "Uploading licenses"
+aws s3 cp  --color on ./tmp/go-licenses-cli "$bPATH/go-licenses-cli" --recursive
+
 
 fUpload "$bBase-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
 fUpload "$bBase-amd-mac"     "$bPATH" "$cMac" "$cAmd"
