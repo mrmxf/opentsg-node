@@ -49,7 +49,7 @@ clog:
     stashId: CLOG_STASH_ID
     gitHubUser: GHUSR
     gitSshPublicKey: GIT_SSH_PUBLIC_KEY
-    tsgBucket : OTSG_S3_BUCKET
+    tsgBucket : S3_BUCKET
   homeFolder: set at runtime
   # clog Jumbo --help to see the full font list
   jumbo:
@@ -183,7 +183,7 @@ docker:
 snippets:
   
   get: 
-    bucket: echo "s3://mmh-cache/bot-tlh/dev"
+    bucket: echo "$S3_BUCKET"
     licenses: go-licenses save "github.com/mrmxf/opentsg-node" --save_path="./tmp/go-licenses-cli" 2> errors
   # this is a command snippet because it takes a while to complete
   walk-git-repos: |
