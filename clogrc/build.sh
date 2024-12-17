@@ -26,6 +26,8 @@ case "$(uname -s)" in
         *)  bOSV="untested:$(uname -s)";;
 esac
 
+mkdir -p tmp
+
 fInfo "build OS $cS${bOSV}$cT on $cH${bCPU}$cT architecture"
 # create linker data info: "commithash|auto-date|suffix|appname|apptitle"
 ldi="$bHASH||$bSUFFIX|$bBASE|OpenTSG"
