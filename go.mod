@@ -1,5 +1,4 @@
 module github.com/mrmxf/opentsg-node
-module github.com/mrmxf/opentsg-node
 
 go 1.23.1
 

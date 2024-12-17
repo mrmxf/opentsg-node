@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
+	"path/filepath"
 	"time"
 
 	gonanoid "github.com/matoous/go-nanoid"
@@ -36,7 +37,7 @@ func main() {
 	debug := flag.Bool("debug", false, "Debug mode on or off") // default values as false
 	profile := flag.String("profile", "", "aws profile to be used")
 	jid := flag.String("jobid", gonanoid.MustID(16), "the opentsg job id")
-	outputmnt := flag.String("output", "", "extensions to all files to be saved")
+	outputuri := flag.String("output", "", "folder/uri prefix added to all files to be saved")
 	outputLog := flag.String("log", "", "the output destination of the log")
 	doVersion := flag.Bool("version", false, "return the version information and exit")
 	doNote := flag.Bool("note", false, "report this version's deployment note")
@@ -68,7 +69,7 @@ func main() {
 	// Import the file to generate open tpg
 	otsg, configErr := tsg.BuildOpenTSG(commandInputs, *profile, *debug, &tsg.RunnerConfiguration{RunnerCount: 1, ProfilerEnabled: true}, myFlags...)
 
-	logs := errhandle.LogInit(*outputLog, *outputmnt)
+	logs := errhandle.LogInit(*outputLog, *outputuri)
 	// return the config error or start the program
 	if configErr != nil {
 		// Show the version of this build
@@ -79,9 +80,10 @@ func main() {
 		// run opentsg
 		opentsgwidgets.AddBuiltinWidgets(otsg)
 		tsg.AddBaseEncoders(otsg)
-		tsg.LogToFile(otsg, slog.HandlerOptions{Level: slog.LevelDebug}, "./logs/", *jid)
+		jobLog := filepath.Join(*outputuri, "./_logs/")
+		tsg.LogToFile(otsg, slog.HandlerOptions{Level: slog.LevelDebug}, jobLog, *jid)
 
-		otsg.Run(*outputmnt)
+		otsg.Run(*outputuri)
 	}
 	elapsed := time.Since(start)
 	fmt.Printf("tsg took %s to run\n", elapsed)
