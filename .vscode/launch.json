@@ -5,19 +5,40 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "main",
+      "name": "main (blink-browser)",
       "type": "go",
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}",
       "args": [
         "-c",
-        "/home/bruce/gr/otsg-marimo/jobs/job0011/main.json",
+        "/home/bruce/gr/otsg-marimo/src/jobs/job0007/main.json",
         "-output",
-        "/home/bruce/gr/otsg-marimo/jobs/job0011",
+        "/home/bruce/gr/otsg-marimo/src/jobs/job0007",
         "-jobid",
-        "job0011"
+        "job0003",
+        "-log",
+        "stdout",
+        "-debug"
       ]
-    }
+    },
+    {
+      "name": "main (blink-dbg)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}",
+      "args": [
+        "-c",
+        "/home/bruce/gr/otsg-marimo/jobs/job0092/main.json",
+        "-output",
+        "/home/bruce/gr/otsg-marimo/jobs/job0092",
+        "-jobid",
+        "job0092",
+        "-log",
+        "stdout",
+        "-debug"
+      ]
+    },
   ]
 }

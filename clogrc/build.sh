@@ -1,82 +1,42 @@
 #!/usr/bin/env bash
-# clog> build
+# clog>  build
 # short> build & inject metadata into clog
 # extra> push main executables into tmp/
-#
-#      |                |         o|        |
-# ,---.|    ,---.,---.  |---..   ..|    ,---|
-# |    |    |   ||   |  |   ||   |||    |   |
-# `---'`---'`---'`---|  `---'`---'``---'`---'
-#                `---'
+#                             _                                       _
+#   ___   _ __   ___   _ _   | |_   ___  __ _   ___   _ _    ___   __| |  ___
+#  / _ \ | '_ \ / -_) | ' \  |  _| (_-< / _` | |___| | ' \  / _ \ / _` | / -_)
+#  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
+#        |_|                            |___/
 # ------------------------------------------------------------------------------
 # load build config and script helpers
-[ -f clogrc/_cfg.sh   ] && source clogrc/_cfg.sh
-if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc";fi
-
-fInfo "Building Project$cS $PROJECT"
-clog Check
-[ $? -gt 0 ] && exit 1
-# ------------------------------------------------------------------------------
-
-# determine local OS & bCPU
-bCPU=amd && case $(uname -m) in arm*) bCPU="arm";; esac
-case "$(uname -s)" in
-   Linux*)  bOSV=Linux;;
-  Darwin*)  bOSV=Mac;;
-        *)  bOSV="untested:$(uname -s)";;
-esac
-
-mkdir -p tmp
-
-fInfo "build OS $cS${bOSV}$cT on $cH${bCPU}$cT architecture"
-# create linker data info: "commithash|auto-date|suffix|appname|apptitle"
-ldi="$bHASH||$bSUFFIX|$bBASE|OpenTSG"
-# linker data path for the golang semver.SemVerInfo
-ldp="gitlab.com/mrmxf/clog/cloglib/semver.SemVerInfo"
+[ -f clogrc/_cfg.sh   ] && source clogrc/_cfg.sh         # configure project
+eval "$(clog Inc)"                                       # include clog helpers (sh, zsh & bash)
+helper="$(dirname $0)/go-helper.sh" && source "$helper"  # build helpers
 
 # highlight colors
 cLnx="$cC";cMac="$cW";cWin="$cE";cArm="$cS";cAmd="$cH"
-# --- amd ---------------------------------------------------------------------
-ldi="$bHASH|linux|amd64|$bBASE|OpenTSG"
-printf "${cT}Build$cLnx   linux$cAmd amd64$cX size:$cLnx "
-f=tmp/$bBASE-amd-lnx
-GOOS="linux" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o  $f
-du --apparent-size --block-size=M $f; printf "$cX"
 
-printf "${cT}Build$cMac  darwin$cAmd amd64$cX size:$cMac "
-ldi="$bHASH|darwin|amd64|$bBASE|OpenTSG"
-f=tmp/$bBASE-amd-mac
-GOOS="darwin" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o  $f
-du --apparent-size --block-size=M $f; printf "$cX"
+fInfo "Building Project$cS $bPROJECT $cT using $helper"
 
-printf "${cT}Build$cE windows$cAmd amd64$cX size:$cE "
-f=tmp/$bBASE-amd-win.exe
-ldi="$bHASH|windows|amd64|$bBASE|OpenTSG"
-GOOS="windows" GOARCH="amd64" go build -ldflags "-X $ldp=$ldi" -o $f
-du --apparent-size --block-size=M $f; printf "$cX"
+#clog Check
+[ $? -gt 0 ] && exit 1
+# ------------------------------------------------------------------------------
 
-# --- arm ---------------------------------------------------------------------
-printf "${cT}Build$cLnx   linux$cArm arm64$cX size:$cLnx "
-f=tmp/$bBASE-arm-lnx
-ldi="$bHASH|linux|arm64|$bBASE|OpenTSG"
-GOOS="linux" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
-du --apparent-size --block-size=M $f; printf "$cX"
+# ensure tmp dir exists
+mkdir -p tmp
 
-printf "${cT}Build$cMac  darwin$cArm arm64$cX size:$cMac "
-f=tmp/$bBASE-arm-mac
-ldi="$bHASH|darwin|arm64|$bBASE|OpenTSG"
-GOOS="darwin" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
-du --apparent-size --block-size=M $f; printf "$cX"
+branch="$(clog git branch)"
+hash="$(clog git hash head)"                                     # use the head hash as the build hash
+suffix="" && [[ "$branch" != "main" ]] && suffix="$branch"       # use the branch name as the suffix
+app=opentsg-node                                                 # command you type to run the build
+title="OpenTSG Render Node"                                      # title of the software
+linkerPath="github.com/mrmxf/opentsg-node/src/semver.SemVerInfo" # go tool objdump -S tmp/opentsg-node-amd-lnx|grep /semver.SemVerInfo
 
-printf "${cT}Build$cE windows$cArm arm64$cX size:$cE "
-f=tmp/$bBASE-arm-win.exe
-ldi="$bHASH|windows|arm64|$bBASE|OpenTSG"
-GOOS="windows" GOARCH="arm64" go build -ldflags "-X $ldp=$ldi" -o  $f
-du --apparent-size --block-size=M $f; printf "$cX"
-
-# printf "${cT}Build$cS wasm$cS arm64$cX$cS"
-#f=tmp/wasm-$bBASE
-# GOOS="js" GOARCH="wasm" go build -ldflags "-X $ldp=$ldi" -o  $f
-# du --apparent-size --block-size=1 $f; printf "$cX"
+fGoBuild tmp/opentsg-node-amd-lnx     linux   amd64 $hash "$suffix" $app "$title" "$linkerPath"
+fGoBuild tmp/opentsg-node-amd-win.exe windows amd64 $hash "$suffix" $app "$title" "$linkerPath"
+fGoBuild tmp/opentsg-node-amd-mac     darwin  amd64 $hash "$suffix" $app "$title" "$linkerPath"
+fGoBuild tmp/opentsg-node-arm-lnx     linux   arm64 $hash "$suffix" $app "$title" "$linkerPath"
+fGoBuild tmp/opentsg-node-arm-win.exe windows arm64 $hash "$suffix" $app "$title" "$linkerPath"
+fGoBuild tmp/opentsg-node-arm-mac     darwin  arm64 $hash "$suffix" $app "$title" "$linkerPath"
 
 fInfo "${cT}All built to the$cF tmp/$cT folder\n"

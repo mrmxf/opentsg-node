@@ -3,7 +3,10 @@ module github.com/mrmxf/opentsg-node
 go 1.23.1
 
 require (
+	github.com/fatih/color v1.18.0
+	github.com/matoous/go-nanoid v1.5.1
 	github.com/mrmxf/opentsg-modules v0.0.0-20241122145638-9555f7ebfa7b
+	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -31,11 +34,11 @@ require (
 	github.com/howeyc/crc16 v0.0.0-20171223171357-2b2a61e366a6 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
-	github.com/matoous/go-nanoid v1.5.1 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mrmxf/opentsg-mhl v0.4.1-0.20240925105016-88f06c5da0b6 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/peterbourgon/mergemap v0.0.1 // indirect
-	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect

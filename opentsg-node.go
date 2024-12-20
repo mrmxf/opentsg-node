@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"flag"
 	"fmt"
 	"log/slog"
@@ -8,13 +9,16 @@ import (
 	"time"
 
 	gonanoid "github.com/matoous/go-nanoid"
-	"github.com/mrmxf/opentsg-node/versionstr"
+	"github.com/mrmxf/opentsg-node/src/semver"
 
 	errhandle "github.com/mrmxf/opentsg-modules/opentsg-core/errHandle"
 
 	"github.com/mrmxf/opentsg-modules/opentsg-core/tsg"
 	opentsgwidgets "github.com/mrmxf/opentsg-modules/opentsg-widgets"
 )
+
+//go:embed releases.yaml
+var vFs embed.FS
 
 // dummy data to be overriden by linker injection for production
 var LDos = "?os"
@@ -27,10 +31,10 @@ var LDappname = "opentsg"
 // or change this all into the core repo?
 func main() {
 	start := time.Now()
-	err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname, LDsuffix)
-	if err != nil {
-		panic(err)
-	}
+	// err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname, LDsuffix)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	// bring in the input file
 	configfile := flag.String("c", "", "config file location") // default values as nothing
@@ -48,15 +52,15 @@ func main() {
 	// if the version istrue
 	flag.Parse()
 	if *doVersion {
-		fmt.Printf(LDappname+" version %s\n", versionstr.Info.Long)
+		fmt.Printf(LDappname+" version %s\n", semver.Info.Long)
 		return
 	}
 	if *doNote {
-		fmt.Println(versionstr.Info.Note)
+		fmt.Println(semver.Info.Note)
 		return
 	}
 	if *doShortVersion {
-		fmt.Println(versionstr.Info.Short)
+		fmt.Println(semver.Info.Short)
 		return
 	}
 
@@ -103,3 +107,8 @@ func (i *flagStrings) Set(value string) error {
 }
 
 var myFlags flagStrings
+
+func init() {
+	//initialise the linker data parsed version numbers
+	semver.Initialise(vFs, "releases.yaml")
+}
