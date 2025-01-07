@@ -1,35 +1,17 @@
 {
-    "cSpell.words": [
-        "appname",
-        "benchtime",
-        "bulding",
-        "colour",
-        "colouring",
-        "colours",
-        "configfile",
-        "errhandle",
-        "fourcolor",
-        "framedraw",
-        "framenumber",
-        "gridexample",
-        "initialises",
-        "istrue",
-        "labelandfour",
-        "LDappname",
-        "LDcommit",
-        "LDcpu",
-        "LDdate",
-        "ldflags",
-        "loaderaces",
-        "loadergrid",
-        "mrmxf",
-        "neighbours",
-        "OPENTPG",
-        "opentsg",
-        "outputmnt",
-        "overriden",
-        "tpig",
-        "tpigexample",
-        "versionstr"
-    ]
+    "editor.tabSize": 2,
+    "cSpell.customDictionaries": {
+        "cspell-this-project": {
+            "name": "cspell-this-project",
+            "path": "${workspaceRoot}/.vscode/cspell-this-project.txt",
+            "description": "Words used in this project",
+            "addWords": true
+        },
+        "custom": true, // Enable the `custom` dictionary
+        "internal-terms": false // Disable the `internal-terms` dictionary
+    },
+    "cSpell.dictionaries": [
+        "cspell-this-project"
+    ],
+    "cSpell.words": []
 }

@@ -1,162 +1,17 @@
 ---
 # yamllint disable rule:colons
-# clog Jumbo "clog.core.config"  --font straight
-#                                             _
-#  _ |  _   _      _  _   _  _     _  _   _  (_ .  _
-# (_ | (_) (_) .  (_ (_) |  (- .  (_ (_) | ) |  | (_)
-#          _/                                     _/
-### when clog starts it uses these config values. clog then looks for a file
-###    called `clog.config.yaml` in each of the folders specified in the
-###    `clog.clogrc.searchOrder` property in the embeded config. Every time a
-###    match is found it starts the loop again because you might have changed
-###    the search order. Don't make loops - that's dumb.
-###    The last config files loaded have the values used.
-
-###    Finally - an external configSource can be specified for each of the root
-###    keys - this is because those config are probably project specific and
-###    change at a different rate to the main config. They are loaded last.
+#                             _                                       _
+#   ___   _ __   ___   _ _   | |_   ___  __ _   ___   _ _    ___   __| |  ___
+#  / _ \ | '_ \ / -_) | ' \  |  _| (_-< / _` | |___| | ' \  / _ \ / _` | / -_)
+#  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
+#        |_|                            |___/
+# #############################################################################
+# CHECK
+# #############################################################################
+#check:
 
 # #############################################################################
-#        _                  _          _                               _
-#   __  | |  ___   __ _    (_)  _ _   | |_   ___   _ _   _ _    __ _  | |  ___
-#  / _| | | / _ \ / _` |   | | | ' \  |  _| / -_) | '_| | ' \  / _` | | | (_-<
-#  \__| |_| \___/ \__, |   |_| |_||_|  \__| \___| |_|   |_||_| \__,_| |_| /__/
-#                 |___/
-# #############################################################################
-clog:
-  api:
-    # api mappings when the server is used
-    - route:
-  clogrc:
-    configFileBase: clog.config
-    configFormat: yaml
-    # the search order for the config files. The last file found in the list
-    # values higher in the search order are overwritten by values lower down
-    # e.g. $HOME/.config/clogrc/clog.config.yaml is overridden by ./clogrc/clog.config.yaml
-    searchOrder:
-      - /var/clogrc/
-      - $HOME/.config/clogrc/
-      - ./clogrc/
-  # these are the ENV variables that are searched for by the library
-  # override these in a local repo if you need th change the names
-  env:
-    dbToken: DB_ROACH
-    awsAccess: AWS_ACCESS_KEY_ID
-    awsSecret: AWS_SECRET_ACCESS_KEY
-    gitLabAccessToken: GLAT
-    gitHubAccessToken: GHAT
-    gitHubGistToken: GHGIST
-    stashId: CLOG_STASH_ID
-    gitHubUser: GHUSR
-    gitSshPublicKey: GIT_SSH_PUBLIC_KEY
-  homeFolder: set at runtime
-  # clog Jumbo --help to see the full font list
-  jumbo:
-    font: small
-    sample: www.mrmxf.com
-  version:
-    # set at runtime from /releases.yaml
-    short: 0.0.0
-    long: 0.0.0-type-hash
-# #############################################################################
-#        _                 _
-#   __  | |_    ___   __  | |__
-#  / _| | ' \  / -_) / _| | / /
-#  \__| |_||_| \___| \__| |_\_\
-# #############################################################################
-check:
-  # checkLogLevel: debug | info | warn | error - all go to stdErr
-  checkLogLevel: Info
-  # logHandler: default | plain - default pretty handler for humans
-  logHandler: default
-
-  # the 2nd level keys define the CLI thing to check. If blank use default
-  # clog Check - use the default check list
-  # clog Check banana - check the list from check.banana: in the config file
-  #
-  # Syntax
-  # 2nd level key = checkName
-  #  e.g. check.banana
-  #
-  # 3rd level key - checkType
-  #    .report                      - report the value of a snippet
-  #    .report.warn-if
-  #    .report.warn-group-NAME
-  #    .report.error-if
-  #    .report.error-group-NAME
-  #    .dependencies                - report the status of dependencies
-
-  default-core:
-    report:
-      - tag-ref: clog git vcode
-      - tag-HEAD: clog git tag head
-      - tag-latest: clog git tag latest
-      - tag-origin: clog git tag origin
-        # warn-group-NAME will perform simple conditions on parsed values
-      - warn-group-tags:
-          - tag-HEAD != tag-ref
-          - tag-latest != tag-ref
-          - tag-origin != tag-ref
-      - branch: clog git branch
-      - hash-HEAD: clog git hash head
-      - hash-origin: clog git hash origin
-      # warn-group-NAME checks previous results and ONLY warns if condition true
-      - warn-group-hash:
-          - hash-HEAD != hash-origin
-      - msg-latest: clog git message latest
-      - msg-ref: clog git message ref
-      # warn-group-NAME checks previous results and ONLY warns if condition true
-      - warn-group-msg:
-          - msg-latest != msg-ref
-        # warn-if will run snippets and return warning if $? >0
-      - warn-if:
-          - tree-clean: clog    git tree clean
-          - tree-ahead: clog    git tree ahead
-          - tree-behind: clog   git tree behind
-          - tree-unstaged: clog git unstaged
-  # --- clog Check gitlab-env -------------------------------------------------
-  gitlab-core-env:
-    # report on the gitlab environment (empty snippet results in an echo)
-    report:
-      - PATH:
-      - CI_COMMIT_BRANCH:
-      - CI_COMMIT_REF_SLUG:
-      - CI_PIPELINE_SOURCE:
-      - CI_MERGE_REQUEST_APPROVED:
-      - CI_MERGE_REQUEST_ID:
-      - CI_MERGE_REQUEST_LABELS:
-      - CI_MERGE_REQUEST_REF_PATH:
-      - CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:
-      - CI_BUILDS_DIR:
-      - CI_COMMIT_DESCRIPTION:
-      - CI_COMMIT_TAG:
-      - CI_JOB_STAGE:
-      - CI_JOB_TOKEN:
-      - CI_PIPELINE_NAME:
-      - CI_PROJECT_DIR:
-      - CI_PROJECT_PATH:
-      - CI_RUNNER_VERSION:
-      - CI_SERVER:
-      - GITLAB_USER_EMAIL:
-      - GITLAB_USER_ID:
-      - GITLAB_USER_LOGIN:
-      - GITLAB_USER_NAME:
-      - KUBECONFIG:
-# #############################################################################
-#      _              _
-#   __| |  ___   __  | |__  ___   _ _
-#  / _` | / _ \ / _| | / / / -_) | '_|
-#  \__,_| \___/ \__| |_\_\ \___| |_|
-# #############################################################################
-docker:
-  # optional path to a url or file path or `clog`
-  configPath: clog
-# #############################################################################
-#               _                       _
-#   ___  _ _   (_)  _ __   _ __   ___  | |_   ___
-#  (_-< | ' \  | | | '_ \ | '_ \ / -_) |  _| (_-<
-#  /__/ |_||_| |_| | .__/ | .__/ \___|  \__| /__/
-#                  |_|    |_|
+# SNIPPETS
 # #############################################################################
 # --- command snippets clog <snippet> --------------------------------------------
 # --- IMPORTANT: command snippets stream their output {for terminals}
@@ -172,110 +27,15 @@ docker:
 #          clog watch
 #    con
 snippets:
-  # this is a command snippet because it takes a while to complete
-  walk-git-repos: |
-    source <( clog Core Crayon ) # set color strings
-    root=..
-    [ -n "$GIT_WALK_REPOS_ROOT" ] && root="$GIT_WALK_REPOS_ROOT"
-    for i in $root/* ; do
-      status="  $cS clean$cT "
-      if [ ! -d "$i/.git" ]; then
-        status="   $cI skip$cT "
-      else
-        cd $i
-        [ -n "$(git status | grep "hange")" ] && status="$cE unclean$cT "
-      fi
-      printf "$status$i$cX\n"
-    done
-  # dev commands
-  godoc: godoc     -http=localhost:6060 &&     open http://localhost:6060/pkg/
-  godoc-mac: godoc -http=localhost:6060 && xdg-open http://localhost:6060/pkg/
-  # --- git snippets clog git <snippet> ----------------------------------------
   git:
-    # IMPORTANT ZSH gets confused with "--" so use always use quotes to prevent null output
-    # IMPORTANT YAML may parse logical expressions into arrays of strings e.g. [ -z "foo" ]
-    # IMPORTANT use quotes carefully '[ -z "foo" ]' is a shell expression [ -z "foo" ] is an array of strings
-    branch: git branch --show-current
-    # --- git hash snippets:  clog git tag <snippet> -----------------------------
-    hash:
-      head: git rev-list -1 HEAD
-      origin: git ls-remote --tags origin | tail -1 | head -c 40
-    # --- git message snippets:  clog git tag <snippet> -----------------------------
-    message:
-      latest: git log HEAD | head -5 | tail -1 | xargs
-      ref: echo 'set "clog.config.yaml/shellsnippets.git-message-ref" to a release message in your project'
-    origin: git config --get remote.origin.url
-    # --- git tag snippets:  clog git tag <snippet> -----------------------------
-    tag:
-      head: git tag --points-at HEAD
-      latest: git tag --sort=committerdate | tail -1
-      origin: git ls-remote --tags origin | tail -1 | sed -r 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
-      tidy: |
-        eval "$(clog Inc)"  # define display functions etc.
-        if [ -f clogrc/_cfg.sh ];then source clogrc/_cfg.sh;else echo "no clogrc/_cfg.sh" && exit 1;fi
-        #
-        fInfo "Retag to   $cH $vCODE$cX$cT $vCodeType ($cW $bMSG $cT)"
-        # silently delete existing tag if it exists
-        fInfo "${cC}git tag$cS -d$cH \"$vCODE\""
-                    git tag    -d      $vCODE       >/dev/null 2>&1
-        # set the tag to the HEAD
-        fInfo "${cC}git tag$cS -a$cH \"$vCODE\"$cX$cS HEAD -m$cW \"$bMSG\""
-                    git tag    -a      "$vCODE"    HEAD -m     "$bMSG"
-        fInfo "${cC}git push$cS --delete$cE origin$cS \"$cH$vCODE\""
-                    git push    --delete    origin "$vCODE"      >/dev/null 2>&1
-        fInfo "${cC}git push$cE          origin$cS \"$cH$vCODE\""
-                    git push    origin     "$vCODE"
-    # --- git tree snippets:  clog git tree <snippet> ---------------------------
-    tree:
-      ahead: if [ "$(git status|grep -oE '(branch is ahead)')" ];then echo "Branch ahead - do push ";exit 1;else echo "ok";fi
-      behind: if [ "$(git status|grep -oE '(merge the remote)')" ];then echo "Branch behind - do pull";exit 1;else echo "ok";fi
-      clean: if [ "$(git status|grep -oE '(working tree clean)')" ];then echo "ok";else echo "Working tree not clean";exit 1;fi
-    unstaged: if [ "$(git status|grep -oE '(Changes not staged)')" ];then echo "Commit unstaged changes";exit 1; else echo "ok";fi
-    vcode: echo 'set "clog.config.yaml/snippets.git.vcode" to the project's reference semver'
-    # -------------------------------------------------------------------------
-    # --- install snippets --------------------------------------------------
-    #   clog install clog  # tool install thyself
-  install:
-    # --- install check snippets ----------------------------------------------------
-    # clog install check golang && echo "Yay, found it" || clog install golang
-    check:
-      clog: "clog version >/dev/null 2>&1"
-      golang: "go version >/dev/null 2>&1"
-      godoc: "which godoc >/dev/null 2>&1"
-      golangci-lint: "golangci-lint --version >/dev/null 2>&1"
-      glab: "glab version >/dev/null 2>&1"
-      gh: "gh --version >/dev/null 2>&1"
-    # install snippets --------------------------------------------------------
-    clog: "curl https://mrmxf.com/get/clog | bash"
-    clogdev: "curl https://mrmxf.com/get/clogdev | bash"
-    clogrc: "curl https://mrmxf.com/get/clogrc | bash"
-    golang: 'echo download go1.23.0.linux-amd64.tar.gz and run: "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz"'
-    golang-mac: brew install go
-    godoc: "go install golang.org/x/tools/cmd/godoc@latest"
-    golangci-lint: "curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.60.1"
-    glab: |
-      V="$(glab release list --repo gitlab-org/cli 2>/dev/null|grep ago|grep -oE '[0-9]+\.[0-9]+\.[0-9]+'|head -1)"
-      [ -z "V" ] && V="1.48.0"
-      url="https://gitlab.com/gitlab-org/cli/-/releases/v${V}/downloads/glab_${V}_linux_amd64.deb"
-      echo "installing version \"$V\" from $url"
-      curl -L $url -o /tmp/glab.deb && sudo apt-get install /tmp/glab.deb
-    glab-mac: "brew install glab"
-    gh: |
-      (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-      && sudo mkdir -p -m 755 /etc/apt/keyrings \
-      && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-      && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-      && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-      && sudo apt update \
-      && sudo apt install gh -y
-    gh-mac: "brew install gh"
+    vcode: cat releases.yaml|grep version|head -1|grep -oE '[0-9]+\.[0-9]+\.[0-9]'
   # --- project snippets:  clog project <snippet> ---------------------------
   # typically used for global tool version propagation, node version etc.
-  project:
-    needs:
-      go-version: 1.23.0
-      hugo-version: 0.136.0
-      node-version: 21.7.0
+  # project:
+  #   needs:
+  #     go-version: "1.23.0"
+  #     hugo-version: "0.136.0"
+  #     node-version: "21.7.0"
 
 # #############################################################################
 #                 _

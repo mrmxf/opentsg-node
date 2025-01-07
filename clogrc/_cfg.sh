@@ -6,9 +6,9 @@
 #                 |___/
 
 export bPROJECT=$(basename $(pwd))              # project you're building
-export vCODE=$(clog git vcode)                  # referrence code version
+export vCODE=$(clog git vcode)                  # reference code version
 export bCodeType="Golang"
-export bBASE="OpenTSG"
+export bBASE="opentsg"
 export bMSG="$(clog git message ref)"            # reference message
 export bHASH="$(clog git hash head)"              # hash of head commit
 # add a suffix to any build not on the main branch

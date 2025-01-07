@@ -11,7 +11,6 @@ They do **not** take precedence over create fields in parent factories.
 
 Generate works by taking a base widget and using it to generate a new widget,
 replacing specified
-
 fields in the base widget with the values from the data.
 
 ```json
@@ -83,7 +82,6 @@ in the generated widget.
            "d.{{swatchTypes}}": ["grid.location","backgroundColor"]}
           }
 ```
-
 
 ## factory layout
 
