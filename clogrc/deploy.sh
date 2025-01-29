@@ -20,8 +20,10 @@ clog Check deploy
 [ $? -gt 0 ] && [ -z "$1" ] && echo "clog Check failed aborting ..." && exit 1
 # ------------------------------------------------------------------------------
 
-# highlight colors
-cLnx="$cC";cMac="$cW";cWin="$cE";cArm="$cS";cAmd="$cH"
+CACHE="s3://mmh-cache"
+BOT=$MM_BOT
+BRANCH="staging"
+REPO=$(basename $GITPOD_REPO_ROOT)
 
 # deploy a tagged release or "clogrc" or " "clogdev"
 VV="$vCODE"
@@ -32,48 +34,37 @@ BRANCH="$(clog git branch)"
 bPATH="$bucket/tsgbin/v$VV"
 fInfo "Deploying to $cF$bPATH"
 
-fInfo "Making build script for version$cW $VV$cT in$cF tmp/openTSG$shVV"
-clog Cat core/template/deploy-clog-template.sh | sed  -r "s/CLOGVERSIONKEY/$VV/" > ./tmp/openTSG$shVV
+OPT="--include \"*\" "
+ACTION=Upload
 
+# do preflight checks & abort if user does not want to continue
+source $GITPOD_REPO_ROOT/clogrc/core/s3sync.sh
+fValidate
+# ------------------------------------------------------------------------------
 
+#define the folders to sync(upload) - one per line
+# SYNCS=(
+#   "$OPT site/folder1   $CACHE/$BOT/$BRANCH/$REPO/folder1"
+#   "$OPT site/folder2   $CACHE/$BOT/$BRANCH/$REPO/folder2"
+# )
 
+# do sync
+# fSync
 
-fUpload() {
-  echo "$1"
-  SRC="./tmp/$1"
-  src="$cF./tmp/$4$1"
-  DST="$2/$1"
-  dst="$cF$2/$3$1"
-  fInfo "Uploading from $src to $dst$cX"
+EXE=msgtsg
+# do anything remedial like single file copies here....
+fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) create$cF _lx$EXE-so.zip"
+zip -j _lx$EXE-so.zip lib/*
 
-  if ! aws s3 cp  --color on $SRC $DST; then
-    exit 2
-  fi
-  
+fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF _lx$EXE-so.zip"
+aws s3 cp ./_lx$EXE-so.zip s3://mmh-cache/bot-bdh/staging/get/_lx$EXE-so.zip
 
+fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF removing .zip"
+rm _lx$EXE-so.zip
 
-  # return an error if this breaks
-}
+fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT}) sync$cF tpg binaries"
+aws s3 cp ./_la$EXE s3://mmh-cache/bot-bdh/staging/get/_la$EXE
+aws s3 cp ./_lx$EXE s3://mmh-cache/bot-bdh/staging/get/_lx$EXE
+aws s3 cp ./_win$EXE.exe s3://mmh-cache/bot-bdh/staging/get/_win$EXE.exe
 
-## extract and upload the licenses
-clog install go-licenses
-clog get licenses
-# separate folder function
-fInfo "Uploading licenses"
-aws s3 cp  --color on ./tmp/go-licenses-cli "$bPATH/go-licenses-cli" --recursive
-
-
-fUpload "$bBase-amd-lnx"     "$bPATH" "$cLnx" "$cAmd"
-fUpload "$bBase-amd-mac"     "$bPATH" "$cMac" "$cAmd"
-fUpload "$bBase-amd-win.exe" "$bPATH" "$cWin" "$cAmd"
-
-fUpload "$bBase-arm-lnx"     "$bPATH" "$cLnx" "$cArm"
-fUpload "$bBase-arm-mac"     "$bPATH" "$cMac" "$cArm"
-fUpload "$bBase-arm-win.exe" "$bPATH" "$cWin" "$cArm"
-
-# this doesn't upload anything
-# fUpload "openTSG$shVV" "$CLOG_BUCKET"
-echo
-fInfo "You can test this version with one of ..."
-fInfo "    $cC curl$cF https://mrmxf.com/${cC}get$cF/${cW}openTSG$shVV$cT  |$cC bash"
-fInfo "    $cC curl$cF https://mrmxf.com/${cC}get$cF/${cW}openTSG$shVV$cT  |$cC zsh"
+aws s3 cp ./clogrc/tpg-installer.sh s3://mmh-cache/bot-bdh/staging/get/$EXE
