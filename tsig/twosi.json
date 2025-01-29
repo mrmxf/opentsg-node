@@ -1,5 +1,7 @@
 {
-
+    "colorSpace": {
+        "ColorSpace": "p3"
+    },
     "props": {
         "type": "builtin.ebu3373/twosi",
         "location": {
@@ -9,7 +11,9 @@
                 "x2": 151,
                 "y2": 206
             }
+        },
+        "colorSpace": {
+            "ColorSpace": "p3"
         }
-       
     }
 }
