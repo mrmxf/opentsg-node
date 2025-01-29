@@ -26,10 +26,10 @@
     }
   ],
 "create":[{
-  "canvas":{    
-    "name": [
-      "./tpig/example/ebuHouse.png"
-      ],
+  "canvas":{  
+    "outputs": [
+      "./tsig/example/ebuHouse.png"
+      ],  
     "geometry":"./objBases/house.json"
   },
   "bars":{},

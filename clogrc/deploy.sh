@@ -1,14 +1,23 @@
-# usage> stage
-# short> execute stage.sh to build & upload {{REPO}} to staging
-# long>  execute stage.sh to build & upload {{REPO}} to staging. No other option needed. Edit script to configure upload.
-#                             _
-#   ___   _ __   ___   _ _   | |_   _ __   __ _
-#  / _ \ | '_ \ / -_) | ' \  |  _| | '_ \ / _` |
-#  \___/ | .__/ \___| |_||_|  \__| | .__/ \__, |
-#        |_|                       |_|    |___/
+#  clog> deploy
+# short> push executables to s3
+# extra> Edit script to configure upload.
+#
+#     |          |
+# ,---|,---.,---.|    ,---.,   .
+# |   ||---'|   ||    |   ||   |
+# `---'`---'|---'`---'`---'`---|
+#           |              `---'
+# bitbucket instructions https://support.atlassian.com/bitbucket-cloud/docs/deploy-build-artifacts-to-bitbucket-downloads/
+# ------------------------------------------------------------------------------
+# load build config and script helpers
+[ -f clogrc/_cfg.sh   ] && source clogrc/_cfg.sh
+if [ -z "$(echo $SHELL|grep zsh)" ];then source <(clog Inc); else eval"clog Inc";fi
 
-source $GITPOD_REPO_ROOT/clogrc/core/inc.sh
-fnInfo "Project(${cH}$(basename $GITPOD_REPO_ROOT)${cT})$cF $(basename $0)"
+fInfo "Building Project$cS $bPROJECT$cT (use clog deploy continue to ignore errors)"
+
+clog Check
+clog Check deploy
+[ $? -gt 0 ] && [ -z "$1" ] && echo "clog Check failed aborting ..." && exit 1
 # ------------------------------------------------------------------------------
 
 CACHE="s3://mmh-cache"
@@ -16,7 +25,14 @@ BOT=$MM_BOT
 BRANCH="staging"
 REPO=$(basename $GITPOD_REPO_ROOT)
 
-SRC="opentpg + libs"
+# deploy a tagged release or "clogrc" or " "clogdev"
+VV="$vCODE"
+shVV=""
+BRANCH="$(clog git branch)"
+[[ "$BRANCH" != "main" ]] && VV="dev" && shVV="$VV"
+[[ "$BRACH" == "rc" ]] && VV="rc" && shVV="$VV"
+bPATH="$bucket/tsgbin/v$VV"
+fInfo "Deploying to $cF$bPATH"
 
 OPT="--include \"*\" "
 ACTION=Upload
