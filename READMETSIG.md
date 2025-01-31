@@ -33,14 +33,14 @@ Please make sure you have followed the installation instructions in the README, 
 
 All output from the demo will be saved in the  `tsig/example` folder.
 
-To generate the flat 2d image witn **no** geometry run  `./opentsg-node --c tsig/loadergrid.json --log stdout --debug`.
+To generate the flat 2d image witn **no** geometry run  `./opentsg-node -c tsig/loadergrid.json --debug`.
 This generates the OpenTPG ebu3373 chart, as a flat test pattern.
 
 The output should look like
 
 <img src="./_docs/_images/ebu3373.png" alt="House TSIG" width="500"/>
 
-To generate a  TSIG for the house geometry  run `./opentsg-node --c tsig/loaderTSIG.json --log stdout --debug`. This now uses a canvas file that has TSIG geometry.
+To generate a  TSIG for the house geometry  run `./opentsg-node -c tsig/loaderTSIG.json --debug`. This now uses a canvas file that has TSIG geometry.
 
 The only difference between this and the previous input json is
 
@@ -101,3 +101,54 @@ The complete list of TSIG widgets is given below.
 
 - [Four colour](https://github.com/mrmxf/opentsg-modules/blob/main/opentsg-widgets/_docs/fourcolour/doc.md)
 
+### GridKeys
+
+`"useGridKeys"` is an alternative way of generating the area a widget patch will cover,
+with in the `"props"` field.
+It is an array of strings of areas for the widget to cover, the available prefixes are:
+
+- `tsig:` - for selecting:
+  - tile IDs - e.g. `tsig:A1`
+  - groups - e.g. `tsig:ExampleGroup`
+  - Specific types of groups - e.g. `tsig:ExampleGroup.ExampleField`
+
+The patch that is generated, is compiled of every grid key that is called. It is masked
+so that tiles not associated with the grid keys are not included.
+
+## The TSIG property
+
+The `TSIG` field of thw widget properties allows manipulation of the TSIGs that
+the widget receives as part of its request.
+
+`grouping` groups the TSIGs into the groups given in the TSIG,
+instead of the default base units of the TSIG. e.g. 3 tiles that have the groups:
+
+1. `example:A1`
+2. `example:A2`
+3. `example:A1`
+
+Will produce 2 TSIgs of A1 and A2.
+If every TSIG tile does not have the unit searched for than an error has returned.
+
+```json
+ "TSIG": {
+        "grouping":"example"
+    }
+```
+
+e.g.
+
+```json
+{
+  "props": {
+    "location" : {
+      "box" : {
+        "useGridKeys" : ["tsig:B1"]
+      }
+    },
+     "TSIG": {
+        "grouping":"example"
+    }
+  }
+}
+```
