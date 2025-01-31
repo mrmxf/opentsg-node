@@ -32,7 +32,7 @@ go build
 
 OpenTSG has the following flags:
 
-- `--c` - loads a json or yaml file to be used in configuration e.g, `--c ebu/loadergrid.json`
+- `-c` - loads a json or yaml file to be used in configuration e.g, `-c ebu/loadergrid.json`
 - `--debug` - turns on debug mode, it is off by default.
 - `--profile`- the aws profile to be used, only required if you are using s3 links and have given any keys.
 - `--jobID`- the jobID of the openTSG run, if none is provided then a random 16 byte nanoid is used instead.
@@ -64,7 +64,7 @@ cannabalise into my first tsg
 ### EBU3373 walkthrough demo
 
 ```cmd
-./opentsg-node --c ./ebu/loadergrid.json --debug --log stdout
+./opentsg-node -c ./ebu/loadergrid.json --debug
 ```
 
 ### Artkey demo

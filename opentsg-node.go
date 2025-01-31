@@ -2,7 +2,7 @@ package main
 
 import (
 	"embed"
-	"flag"
+	//"flag"
 	"fmt"
 	"log/slog"
 	"path/filepath"
@@ -11,10 +11,10 @@ import (
 	gonanoid "github.com/matoous/go-nanoid"
 	"github.com/mrmxf/opentsg-node/src/semver"
 
-	errhandle "github.com/mrmxf/opentsg-modules/opentsg-core/errHandle"
-
 	"github.com/mrmxf/opentsg-modules/opentsg-core/tsg"
 	opentsgwidgets "github.com/mrmxf/opentsg-modules/opentsg-widgets"
+
+	flag "github.com/spf13/pflag"
 )
 
 //go:embed releases.yaml
@@ -30,6 +30,7 @@ var LDappname = "opentsg"
 
 // or change this all into the core repo?
 func main() {
+
 	start := time.Now()
 	// err := versionstr.ParseLinkerData(LDos, LDcpu, LDcommit, LDdate, LDappname, LDsuffix)
 	// if err != nil {
@@ -37,17 +38,18 @@ func main() {
 	// }
 
 	// bring in the input file
-	configfile := flag.String("c", "", "config file location") // default values as nothing
-	debug := flag.Bool("debug", false, "Debug mode on or off") // default values as false
-	profile := flag.String("profile", "", "aws profile to be used")
-	jid := flag.String("jobid", gonanoid.MustID(16), "the opentsg job id")
-	outputuri := flag.String("output", "", "folder/uri prefix added to all files to be saved")
-	outputLog := flag.String("log", "", "the output destination of the log")
-	doVersion := flag.Bool("version", false, "return the version information and exit")
-	doNote := flag.Bool("note", false, "report this version's deployment note")
-	doShortVersion := flag.Bool("v", false, "return the short version information and exit")
 
-	flag.Var(&myFlags, "key", "keys for accessing the intended web pages of content")
+	configfile := flag.StringP("config", "c", "", "the config file location") //flag.String("c", "", "config file location") // default values as nothing
+	debug := flag.BoolP("debug", "d", false, "Debug mode on or off")          // default values as false
+	profile := flag.StringP("profile", "p", "", "aws profile to be used")
+	jid := flag.StringP("jobid", "j", gonanoid.MustID(16), "the opentsg job id")
+	outputuri := flag.StringP("output", "o", "", "folder/uri prefix added to all files to be saved")
+	// // SoutputLog := flag.String("log", "", "the output destination of the log")
+	doVersion := flag.BoolP("version", "v", false, "return the version information and exit")
+	doNote := flag.BoolP("note", "n", false, "report this version's deployment note")
+	doShortVersion := flag.BoolP("sversion", "s", false, "return the short version information and exit")
+
+	// flag.Var(&myFlags, "key", "keys for accessing the intended web pages of content")
 
 	// if the version istrue
 	flag.Parse()
@@ -73,12 +75,11 @@ func main() {
 	// Import the file to generate open tpg
 	otsg, configErr := tsg.BuildOpenTSG(commandInputs, *profile, *debug, &tsg.RunnerConfiguration{RunnerCount: 1, ProfilerEnabled: true}, myFlags...)
 
-	logs := errhandle.LogInit(*outputLog, *outputuri)
 	// return the config error or start the program
 	if configErr != nil {
 		// Show the version of this build
-		logs.PrintErrorMessage("F_CONFIG_OPENTSG_", configErr, true) // always make true for config errors
-		logs.LogFlush()
+		fmt.Println("F_CONFIG_OPENTSG_" + configErr.Error()) // always make true for config errors
+
 	} else {
 
 		// run opentsg
