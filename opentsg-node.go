@@ -79,7 +79,7 @@ func main() {
 	if configErr != nil {
 		// Show the version of this build
 		fmt.Println("F_CONFIG_OPENTSG_" + configErr.Error()) // always make true for config errors
-
+		return
 	} else {
 
 		// run opentsg
