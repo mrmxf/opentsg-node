@@ -1,0 +1,185 @@
+{
+    "tileLayout": [
+        {
+            "ID": "East",
+            "neighbours": [
+                "North",
+                "DoorRight",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 0,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 1080,
+                    "y": 1080
+                }
+            }, 
+            "groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "North",
+            "neighbours": [
+                "East",
+                "West",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 1080,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 1080,
+                    "y": 1080
+                }
+            },"groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "West",
+            "neighbours": [
+                "North",
+                "DoorLeft",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 2160,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 1080,
+                    "y": 1080
+                }
+            },
+            "groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "DoorLeft",
+            "neighbours": [
+                "DoorMid",
+                "West",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 3240,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 432,
+                    "y": 1080
+                }
+            },
+            "groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "DoorMid",
+            "neighbours": [
+                "DoorLeft",
+                "DoorRight",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 3672,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 216,
+                    "y": 216
+                }
+            },
+            "groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "DoorRight",
+            "neighbours": [
+                "DoorMid",
+                "East",
+                "Roof",
+                "Floor"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 3888,
+                    "y": 1080
+                },
+                "XY": {
+                    "x": 432,
+                    "y": 1080
+                }
+            },"groups": {
+                "structure": "wall"
+            }
+        },
+        {
+            "ID": "Roof",
+            "neighbours": [
+                "North",
+                "South",
+                "East",
+                "West"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 3240,
+                    "y": 0
+                },
+                "XY": {
+                    "x": 1080,
+                    "y": 1080
+                }
+            },
+            "groups": {
+                "structure": "Roof"
+            }
+        },
+        {
+            "ID": "Floor",
+            "neighbours": [
+                "North",
+                "South",
+                "East",
+                "West"
+            ],
+            "layout": {
+                "flat": {
+                    "x": 3240,
+                    "y": 2160
+                },
+                "XY": {
+                    "x": 1080,
+                    "y": 1080
+                }
+            },"groups": {
+                "structure": "Floor"
+            }
+        }
+    ],
+    "dimensions": {
+        "flat": {
+            "X0": 0,
+            "Y0": 0,
+            "X1": 4320,
+            "Y1": 3240
+        }
+    }
+}
