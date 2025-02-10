@@ -8,7 +8,7 @@
     ],
     "include": [
       { "uri": "pyramid.json", "name": "pyramid" },
-      { "uri": "pyramid-data.json", "name": "d" }
+      { "uri": "pyramid-data-new.json", "name": "d" }
     ],
     "generate": [
       {
@@ -16,7 +16,7 @@
           "name": [{"R":"[:]"}, {"CD":"[:]"}, {"B":"[:]"}],
           "action": {
            "pyramid" : {
-           "d.{{swatchType}}": ["grid.location","backgroundColor"]}
+           "d.{{swatchType}}": ["props.location.box","backgroundColor"]}
           }
       }
     ]

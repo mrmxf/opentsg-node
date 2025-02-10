@@ -1,0 +1,1580 @@
+{
+    "blue": {
+        "dimensions": [
+            5,
+            4,
+            3
+        ],
+        "data": [
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 1,
+                            "x2": 5,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1962,2857,3080)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 2,
+                            "x2": 4,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3334,2812,2358)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 3,
+                            "x2": 3,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3240,1848,33)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 1,
+                            "x2": 11,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(25,1791,2393)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 2,
+                            "x2": 10,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(480,2263,697)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 3,
+                            "x2": 9,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(53,1338,819)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 1,
+                            "x2": 17,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3821,3799,4039)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 2,
+                            "x2": 16,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3647,3885,104)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 3,
+                            "x2": 15,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(100,2397,2416)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 1,
+                            "x2": 23,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3991,969,2328)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 2,
+                            "x2": 22,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(487,556,1410)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 3,
+                            "x2": 21,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2995,2572,2843)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 7,
+                            "x2": 5,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2827,744,3890)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 8,
+                            "x2": 4,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1014,2438,2352)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 9,
+                            "x2": 3,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1948,1093,2334)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 7,
+                            "x2": 11,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3578,3175,1278)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 8,
+                            "x2": 10,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1284,3204,120)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 9,
+                            "x2": 9,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3299,3523,2221)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 7,
+                            "x2": 17,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1462,1624,331)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 8,
+                            "x2": 16,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2599,425,664)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 9,
+                            "x2": 15,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1964,1554,4046)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 7,
+                            "x2": 23,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(431,949,1942)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 8,
+                            "x2": 22,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3947,3875,2246)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 9,
+                            "x2": 21,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(585,930,1821)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 13,
+                            "x2": 5,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3547,2331,1850)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 14,
+                            "x2": 4,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3105,1434,2561)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 15,
+                            "x2": 3,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3333,726,3527)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 13,
+                            "x2": 11,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(136,3458,2722)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 14,
+                            "x2": 10,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3468,2078,1910)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 15,
+                            "x2": 9,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(17,3427,4055)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 13,
+                            "x2": 17,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2332,111,1661)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 14,
+                            "x2": 16,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1808,3719,1274)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 15,
+                            "x2": 15,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3895,3392,1501)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 13,
+                            "x2": 23,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(325,1995,290)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 14,
+                            "x2": 22,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3330,1850,1671)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 15,
+                            "x2": 21,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2657,158,2313)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 19,
+                            "x2": 5,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1948,555,777)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 20,
+                            "x2": 4,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1673,3022,2808)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 21,
+                            "x2": 3,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1953,1808,2832)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 19,
+                            "x2": 11,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3348,1433,2672)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 20,
+                            "x2": 10,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1373,2722,213)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 21,
+                            "x2": 9,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(465,3344,1649)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 19,
+                            "x2": 17,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2427,2369,3313)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 20,
+                            "x2": 16,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(624,1245,993)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 21,
+                            "x2": 15,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1706,590,3099)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 19,
+                            "x2": 23,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(649,1382,1958)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 20,
+                            "x2": 22,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3139,54,2590)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 21,
+                            "x2": 21,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(122,1199,3650)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 25,
+                            "x2": 5,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(485,496,1247)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 26,
+                            "x2": 4,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2991,3883,1423)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 27,
+                            "x2": 3,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3022,2128,2861)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 25,
+                            "x2": 11,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2787,1947,1766)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 26,
+                            "x2": 10,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2811,905,3246)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 27,
+                            "x2": 9,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2103,1222,133)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 25,
+                            "x2": 17,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2703,966,2769)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 26,
+                            "x2": 16,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3986,3319,976)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 27,
+                            "x2": 15,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(49,203,2301)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 25,
+                            "x2": 23,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(671,750,2932)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 26,
+                            "x2": 22,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(284,206,2063)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 27,
+                            "x2": 21,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2410,296,3319)"
+            }
+        ]
+    },
+    "green": {
+        "dimensions": [
+            5,
+            4,
+            3
+        ],
+        "data": [
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 1,
+                            "x2": 5,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1736,2705,1971)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 2,
+                            "x2": 4,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(219,3429,507)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 3,
+                            "x2": 3,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3383,864,929)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 1,
+                            "x2": 11,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2160,1479,2485)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 2,
+                            "x2": 10,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3026,3208,4030)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 3,
+                            "x2": 9,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3313,2637,3050)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 1,
+                            "x2": 17,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(206,2607,787)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 2,
+                            "x2": 16,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(187,3512,3060)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 3,
+                            "x2": 15,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2664,3066,3805)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 1,
+                            "x2": 23,
+                            "y2": 6
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1455,1460,1463)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 2,
+                            "x2": 22,
+                            "y2": 5
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(145,4061,3952)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 3,
+                            "x2": 21,
+                            "y2": 4
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(4091,1199,1059)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 7,
+                            "x2": 5,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2371,1704,1214)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 8,
+                            "x2": 4,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1732,752,231)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 9,
+                            "x2": 3,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3354,3530,1689)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 7,
+                            "x2": 11,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3023,1717,2607)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 8,
+                            "x2": 10,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2607,1821,2895)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 9,
+                            "x2": 9,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1209,1923,1308)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 7,
+                            "x2": 17,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2831,340,1897)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 8,
+                            "x2": 16,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1419,2991,2642)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 9,
+                            "x2": 15,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1284,1739,417)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 7,
+                            "x2": 23,
+                            "y2": 12
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2490,1342,2514)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 8,
+                            "x2": 22,
+                            "y2": 11
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(356,2018,4032)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 9,
+                            "x2": 21,
+                            "y2": 10
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(953,776,661)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 13,
+                            "x2": 5,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(304,2215,230)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 14,
+                            "x2": 4,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2273,995,733)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 15,
+                            "x2": 3,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(644,3003,124)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 13,
+                            "x2": 11,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(529,2004,4055)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 14,
+                            "x2": 10,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3352,3941,1325)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 15,
+                            "x2": 9,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2280,142,3247)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 13,
+                            "x2": 17,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1803,3845,3853)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 14,
+                            "x2": 16,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2947,215,2845)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 15,
+                            "x2": 15,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3052,1373,3441)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 13,
+                            "x2": 23,
+                            "y2": 18
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3804,1972,2683)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 14,
+                            "x2": 22,
+                            "y2": 17
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(104,2935,1952)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 15,
+                            "x2": 21,
+                            "y2": 16
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1584,2922,2441)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 19,
+                            "x2": 5,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(550,3435,978)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 20,
+                            "x2": 4,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2503,834,710)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 21,
+                            "x2": 3,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2178,3833,241)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 19,
+                            "x2": 11,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2296,621,3244)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 20,
+                            "x2": 10,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1019,1254,1661)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 21,
+                            "x2": 9,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1715,1802,1982)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 19,
+                            "x2": 17,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(699,3761,2329)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 20,
+                            "x2": 16,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1167,1048,2233)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 21,
+                            "x2": 15,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2843,32,3228)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 19,
+                            "x2": 23,
+                            "y2": 24
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2021,3494,3905)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 20,
+                            "x2": 22,
+                            "y2": 23
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(539,3034,3185)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 21,
+                            "x2": 21,
+                            "y2": 22
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2206,3854,3206)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 0,
+                            "y": 25,
+                            "x2": 5,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3633,2979,2182)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 1,
+                            "y": 26,
+                            "x2": 4,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2151,3004,1533)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 2,
+                            "y": 27,
+                            "x2": 3,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3768,2452,109)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 6,
+                            "y": 25,
+                            "x2": 11,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(517,1684,1364)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 7,
+                            "y": 26,
+                            "x2": 10,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2523,3534,3109)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 8,
+                            "y": 27,
+                            "x2": 9,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2878,3717,2637)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 12,
+                            "y": 25,
+                            "x2": 17,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3002,3586,2578)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 13,
+                            "y": 26,
+                            "x2": 16,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(2500,2351,2229)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 14,
+                            "y": 27,
+                            "x2": 15,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(3697,2884,3038)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 18,
+                            "y": 25,
+                            "x2": 23,
+                            "y2": 30
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1756,1837,3484)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 19,
+                            "y": 26,
+                            "x2": 22,
+                            "y2": 29
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(1221,1810,477)"
+            },
+            {
+                "props": {
+                    "location": {
+                        "box": {
+                            "x": 20,
+                            "y": 27,
+                            "x2": 21,
+                            "y2": 28
+                        }
+                    }
+                },
+                "backgroundColor": "rgb12(351,489,3124)"
+            }
+        ]
+    }
+}
