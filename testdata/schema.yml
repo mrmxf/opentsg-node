@@ -1,0 +1,9 @@
+schemaCheck:
+  - directory: "."
+    ignore:
+      - .vscode
+      - releases.yaml
+    #  - errors 
+    #  - tmp
+    #  - releases.yaml
+    #  - testdata

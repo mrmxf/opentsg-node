@@ -48,7 +48,7 @@ run in the create section, the factory can use both
 the generate and create fields in the same instance
 without any repercussions.
 
-```json
+```javascript
 "include": [
       { "uri": "pyramid.json", "name": "pyramid" },
       { "uri": "pyramid-data.json", "name": "d" }
@@ -67,7 +67,7 @@ The key is the name that is used to generate that name at layer of the dotpath, 
 In this demo the names would go from R0.CD0.B0
 to R4.CD3.B2. Where the full name is `"frame.swatch.blueR0.CD1.B0"`
 
-```json
+```javascript
 "name": [{"R":"[:]"}, {"CD":"[:]"}, {"B":"[:]"}],
 ```
 
@@ -76,7 +76,7 @@ the data name is whatever was declared in the include section.
 Then update these fields "grid.location","backgroundColor" from the base widget with the values from data
 in the generated widget.
 
-```json
+```javascript
  "action": {
            "pyramid" : {
            "d.{{swatchTypes}}": ["grid.location","backgroundColor"]}
