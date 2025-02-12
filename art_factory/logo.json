@@ -1,9 +1,0 @@
-{ "widget identifier": "addimage",
-    "image":
-    "./recAssets/mmic-mrmxf-1000-16bit.png",
-  "grid": {
-    "location":
-      "key:black"
-  },
-  "imageFill":"fill"
-}
