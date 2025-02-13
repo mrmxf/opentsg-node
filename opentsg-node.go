@@ -44,7 +44,6 @@ func main() {
 	profile := flag.StringP("profile", "p", "", "aws profile to be used")
 	jid := flag.StringP("jobid", "j", gonanoid.MustID(16), "the opentsg job id")
 	outputuri := flag.StringP("output", "o", "", "folder/uri prefix added to all files to be saved")
-	// // SoutputLog := flag.String("log", "", "the output destination of the log")
 	doVersion := flag.BoolP("version", "v", false, "return the version information and exit")
 	doNote := flag.BoolP("note", "n", false, "report this version's deployment note")
 	doShortVersion := flag.BoolP("sversion", "s", false, "return the short version information and exit")

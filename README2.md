@@ -4,8 +4,6 @@ The rendering node of the open source [test signal generator][otsg].
 
 ## Contents
 
-List of contents here:
-
 - [Description](#description)
 - [Installation](#installation)
 - [Demos](#demos)
@@ -113,7 +111,7 @@ congratulations, you've made your first test pattern.
 But what if we want a HD pattern and not this UHD one? Well we can update
 the canvas of our test pattern to be HD dimensions.
 Update the `"framesize"` fields and the `"outputs"`
-field so we don;t overwrite our first test pattern in [./ebu/base.json](./ebu/base.json) to the following.
+field, so we don't overwrite our first test pattern. in [./ebu/base.json](./ebu/base.json) to the following.
 
 ```javascript
  "outputs": [
