@@ -4,6 +4,10 @@ Generators are used for making large volumes of widgets. Either
 for single frames with lots of widgets or lots of frames with single widgets.
 With a main aim of reducing the number of widgets being declared in factories.
 
+## Running the demo
+
+Run the demo with the following command `./opentsg-node -c ./example/sequence.json`
+
 ## how does it work
 
 The generate field always runs before the create field, in every factory json.
@@ -32,7 +36,7 @@ fields in the base widget with the values from the data.
           "action": {
            "pyramid" : {
 
-           "d.{{swatchTypes}}": ["grid.location","backgroundColor"]}
+           "d.{{swatchTypes}}": ["props.location.box","backgroundColor"]}
 
           }
       }
@@ -73,13 +77,13 @@ to R4.CD3.B2. Where the full name is `"frame.swatch.blueR0.CD1.B0"`
 
 The action below says for the widget pyramid, use the data `d` with the field {{swatchTypes}},
 the data name is whatever was declared in the include section.
-Then update these fields "grid.location","backgroundColor" from the base widget with the values from data
+Then update these fields "props.location.box","backgroundColor" from the base widget with the values from data
 in the generated widget.
 
 ```javascript
  "action": {
            "pyramid" : {
-           "d.{{swatchTypes}}": ["grid.location","backgroundColor"]}
+           "d.{{swatchTypes}}": ["props.location.box","backgroundColor"]}
           }
 ```
 
@@ -96,4 +100,4 @@ This results in 60 data points in total. These are stored in a depth first order
 In the demo the range of values with the declared names are R[0:4].CD[0:3].B[0:2]
 
 Dimension gives a simple layout of the data, allowing opentsg to
-understand the dimensions of the data.
+understand the nature and dimensions of the data.

@@ -3,20 +3,22 @@
 TSIG stands for Test Signal Input Geometry. It is used for mapping flat images to 3d displays.
 
 In this tutorial we will walk you through generating a pattern for a 2D display, where the properties of the TSIG are used to
-generate the widget patches. This is following on from the previous four colour demos.
+generate the area that TSG widgets are drawn on.
+
+This demo will be using the four colour widget.
 We will also go over grouping TSIG tiles, and generating widget patches based on TSIG groups and IDs.
 
-Starting with groups and TSIGS, if we open the `house.json` file and look at the tiles you can see every tile has a groups field,
-denoting what structure it is part of in the house. We can also utilise these groups to combine TSIGs to build new layouts from the same input json.
-An example json is given below.
+Starting with groups and TSIGS, if we open the [`house.json`](./house.json) TSIG file and look at the tile fields, you can see every tile has a groups field,
+denoting what structure it is part of in the house. We can utilise these groups to combine TSIGs to build new layouts from the same input json.
+An example json of the group is given below.
 
-```json
+```javascript
 "groups": {
     "structure": "Floor"
 }
 ```
 
-First we set up the canvas widget to render the frame.
+To begin this demo we set up the canvas widget to render the frame.
 We will be only running the four algorithm on the wall groups of the TSIG, the roof and floor
 will not be drawn on.
 
@@ -66,7 +68,7 @@ To do this we use the GeometryText widget, that labels each TSIG tile given to i
 with its ID.
 We will only label the wall widgets as they are the only
 TSIGs we coloured in.
-WE do this, by repeating the location we used for the four colour widget.
+We do this by repeating the location we used for the four colour widget.
 
 ```python
 
@@ -110,7 +112,7 @@ tsdef = Tsg(paramsTsdef)
 pCanvas = {
     "type": "builtin.canvasoptions",
     "name": [title+"{{framenumber}}.png"],
-	"geometry":"../exampleTSIGs/house.json"
+     "geometry":"../exampleTSIGs/house.json"
 }
 tsdef.main.addNew("w-canvas", "builtin.canvasoptions", pCanvas)
 ```
@@ -127,8 +129,8 @@ pFourColor = {
             "grouping": "structure"
           }
     },
-	# Choose a minimum of four colours
-	# We go for red, green, blue and yellow
+    # Choose a minimum of four colours
+    # We go for red, green, blue and yellow
     "colors": [ 
         "#FF0000",
         "#00FF00",
@@ -141,7 +143,7 @@ tsdef.main.addNew("w-FourColor", "builtin.fourcolor", pFourColor)
 
 Now lets repeat the process for the labels, so we can visualise
 the new TSIG groupings. We will be labelling the TSIGs by their new structure
-groups.
+groups, repeating the same location we used for the four colour widget.
 
 ```python
 pFourText = {
@@ -150,7 +152,7 @@ pFourText = {
             "grouping": "structure"
           }
     },
-	# Black text colour
+    # Black text colour
     "textColor": #000000
 }
 tsdef.main.addNew("w-GeomColor", "builtin.geometrytext", pFourText)

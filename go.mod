@@ -5,7 +5,7 @@ go 1.23.1
 require (
 	github.com/fatih/color v1.18.0
 	github.com/matoous/go-nanoid v1.5.1
-	github.com/mrmxf/opentsg-modules v0.0.0-20250207125624-0dce67596bd0
+	github.com/mrmxf/opentsg-modules v0.0.0-20250213115832-6a79deddda66
 	github.com/spf13/pflag v1.0.6
 	gopkg.in/yaml.v3 v3.0.1
 )

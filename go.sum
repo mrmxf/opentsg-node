@@ -65,8 +65,8 @@ github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWE
 github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/mrmxf/opentsg-mhl v0.4.1-0.20240925105016-88f06c5da0b6 h1:xAzSIKlsUVlkuZQN503T7Fzly3X78qQnSL1xZZ1NmrI=
 github.com/mrmxf/opentsg-mhl v0.4.1-0.20240925105016-88f06c5da0b6/go.mod h1:Wo+Kub3BVYE4iMxEpsCu4ZRggh+xIFDyxSi0G/RBSAE=
-github.com/mrmxf/opentsg-modules v0.0.0-20250207125624-0dce67596bd0 h1:2eyAwmPhaaednkca+OYCyKmd8dLW9XC+BXX9x4Xi6hs=
-github.com/mrmxf/opentsg-modules v0.0.0-20250207125624-0dce67596bd0/go.mod h1:JJ/4uaquxmk/XEgLUMnqSFSx2+BBnF38feyKRgRc764=
+github.com/mrmxf/opentsg-modules v0.0.0-20250213115832-6a79deddda66 h1:jCIizf8HiA4TPXZpZb4eifZfG6mifwZkdprKIkg0MTA=
+github.com/mrmxf/opentsg-modules v0.0.0-20250213115832-6a79deddda66/go.mod h1:JJ/4uaquxmk/XEgLUMnqSFSx2+BBnF38feyKRgRc764=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 h1:zYyBkD/k9seD2A7fsi6Oo2LfFZAehjjQMERAvZLEDnQ=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646/go.mod h1:jpp1/29i3P1S/RLdc7JQKbRpFeM1dOBd8T9ki5s+AY8=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e h1:fD57ERR4JtEqsWbfPhv4DMiApHyliiK5xCTNVSPiaAs=

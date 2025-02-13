@@ -1,9 +1,7 @@
 schemaCheck:
   - directory: "."
     ignore:
+      - readme.md
       - .vscode
       - releases.yaml
-    #  - errors 
-    #  - tmp
-    #  - releases.yaml
-    #  - testdata
+      - tmp/src

@@ -48,6 +48,7 @@ func main() {
 	doVersion := flag.BoolP("version", "v", false, "return the version information and exit")
 	doNote := flag.BoolP("note", "n", false, "report this version's deployment note")
 	doShortVersion := flag.BoolP("sversion", "s", false, "return the short version information and exit")
+	keys := flag.StringArray("key", []string{}, "the API keys ofr openTSG to use to access secrets etc")
 
 	// flag.Var(&myFlags, "key", "keys for accessing the intended web pages of content")
 
@@ -71,15 +72,14 @@ func main() {
 	}
 
 	commandInputs := *configfile
-
 	// Import the file to generate open tpg
-	otsg, configErr := tsg.BuildOpenTSG(commandInputs, *profile, *debug, &tsg.RunnerConfiguration{RunnerCount: 1, ProfilerEnabled: true}, myFlags...)
+	otsg, configErr := tsg.BuildOpenTSG(commandInputs, *profile, *debug, &tsg.RunnerConfiguration{RunnerCount: 1, ProfilerEnabled: true}, *keys...)
 
 	// return the config error or start the program
 	if configErr != nil {
 		// Show the version of this build
-		fmt.Println("F_CONFIG_OPENTSG_" + configErr.Error()) // always make true for config errors
-		return
+		panic("F_CONFIG_OPENTSG_" + configErr.Error()) // always make true for config errors
+
 	} else {
 
 		// run opentsg
@@ -94,20 +94,6 @@ func main() {
 	fmt.Printf("tsg took %s to run\n", elapsed)
 
 }
-
-// Custom slice for flags of https
-type flagStrings []string
-
-func (i *flagStrings) String() string {
-	return fmt.Sprintf("%v", *i)
-}
-
-func (i *flagStrings) Set(value string) error {
-	*i = append(*i, value)
-	return nil
-}
-
-var myFlags flagStrings
 
 func init() {
 	//initialise the linker data parsed version numbers

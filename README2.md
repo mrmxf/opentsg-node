@@ -32,20 +32,21 @@ go build
 
 OpenTSG has the following flags:
 
-- `-c` - loads a json or yaml file to be used in configuration e.g, `-c ebu/loadergrid.json`
-- `--debug` - turns on debug mode, it is off by default.
-- `--profile`- the aws profile to be used, only required if you are using s3 links and have given any keys.
-- `--jobID`- the jobID of the openTSG run, if none is provided then a random 16 byte nanoid is used instead.
-- `key` -  gitlab, github or AWS key to be used. These are automatically linked to the correct host.
-- `--output` -  the extensions to all files to be saved e.g. `--output mnt/here`
+- `-c --config` - loads a json or yaml file to be used in configuration e.g, `-c ebu/loadergrid.json`
+- `-d --debug` - turns on debug mode, it is off by default.
+- `-p --profile`- the aws profile to be used, only required if you are using s3 links and have given any keys.
+- `- j--jobID`- the jobID of the openTSG run, if none is provided then a random 16 byte nanoid is used instead.
+- `key` -  gitlab, github or AWS key to be used. These are automatically linked to the correct host. Each key
+needs to be declared with the field, e.g. `--key key1 --key key2`
+- `-o --output` -  the extensions to all files to be saved e.g. `--output mnt/here`
 - `--log` - the output destination of the log, the default is to not log anything.
   - `stdout` - output to stdout.
   - `stderr` - output to stderr.
   - `file` - output to a file who's file name is in the format `2006-01-02_150405`.
   - `file:example` - a specifcally named file, must match the regex of `^file:[a-zA-Z0-9\.\/]{1,30}\.[lL][oO][gG]$`
-- `version` - the version information of openTSG.
-- `note` - the version's deployment note of this OpenTSG version.
-- `v` - the short version information
+- `-v --version` - the version information of openTSG.
+- `-n --note` - the version's deployment note of this OpenTSG version.
+- `-s --sversion` - the short version information
 
 ## Demos
 
@@ -53,13 +54,11 @@ These are some demos to give ideas of how to generate your own patterns.
 
 The following demos are available
 
--
--
--
+- [A house TSIG](./READMETSIG.md)
+- [A house TSIG, with groups](./tsig/house-tsig/demo.md)
+- [Generators](./example/README.md)
+- EBU 3373 `./opentsg-node -c ./ebu/loadergrid.json`
 
-### verde demo and walkthrough
-
-cannabalise into my first tsg
 
 ### EBU3373 walkthrough demo
 
