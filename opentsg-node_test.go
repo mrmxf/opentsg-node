@@ -1,5 +1,16 @@
 package main
 
+import (
+	"testing"
+
+	modules "github.com/mrmxf/opentsg-modules"
+)
+
+func TestJson(t *testing.T) {
+	svf, _ := modules.NewSchemaValidatorFile("testdata/schema.yml")
+	svf.ValidateJsons(t)
+}
+
 // go test -bench=. -benchtime=40s
 /*
 func BenchmarkNRGBA64(b *testing.B) {

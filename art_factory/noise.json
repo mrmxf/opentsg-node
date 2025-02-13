@@ -1,9 +1,0 @@
-{
-    "widget identifier": "noise",
-    "minimum": 0,
-    "maximum":4095,
-    "noisetype":"white noise",
-    "grid": {
-        "location": "key:blue"   
-    }
-}

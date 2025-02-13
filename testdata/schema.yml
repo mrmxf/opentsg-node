@@ -1,0 +1,7 @@
+schemaCheck:
+  - directory: "."
+    ignore:
+      - readme.md
+      - .vscode
+      - releases.yaml
+      - tmp/src

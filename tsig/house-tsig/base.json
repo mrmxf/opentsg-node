@@ -1,0 +1,15 @@
+{
+    "props": {
+        "type": "builtin.canvas"
+    },
+   "outputs": [
+        "./tsig/house-tsig/output/four.png"
+    ],
+    "linewidth": 0,
+    "filedepth": 16,
+    "gridColumns": 16,
+    "gridRows": 9,
+    "backgroundFillColor": "rgb12(1656,1656,1656)",
+    "lineColor": "#00FF00",
+    "geometry": "./house.json"
+}

@@ -1,0 +1,46 @@
+{
+  "include": [
+    {
+      "uri": "base.json",
+      "name": "canvas"
+    },
+    {
+      "uri": "fourandtext.json",
+      "name": "four"
+    }
+  ],
+  "create": [
+    {
+      "canvas": {
+        "outputs": [
+          "./tsig/house-tsig/output/fourGridKey.png"
+        ]
+      },
+      "four": {
+        "props": {
+          "location": {
+            "box": {
+              "useGridKeys": [
+                "tsig:structure.wall"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "canvas": {
+        "outputs": [
+          "./tsig/house-tsig/output/fourGrouping.png"
+        ]
+      },
+      "four": {
+        "props": {
+          "TSIG": {
+            "grouping": "structure"
+          }
+        }
+      }
+    }
+  ]
+}

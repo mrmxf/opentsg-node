@@ -34,6 +34,8 @@ ov/**
 #!x/*.png
 !_docs/_images/*.png
 !_docs/_images/*.jpg
+!tsig/house-tsig/output/*.png
+
 
 #ignore any temporary mounted folders (linux)
 mnt/
