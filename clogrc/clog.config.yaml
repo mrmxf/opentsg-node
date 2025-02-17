@@ -6,87 +6,61 @@
 #  \___/ | .__/ \___| |_||_|  \__| /__/ \__, |       |_||_| \___/ \__,_| \___|
 #        |_|                            |___/
 # #############################################################################
-# CHECK
-# #############################################################################
-#check:
-
-# #############################################################################
 # SNIPPETS
 # #############################################################################
-# --- command snippets clog <snippet> --------------------------------------------
-# --- IMPORTANT: command snippets stream their output {for terminals}
-# --- IMPORTANT:   shell snippets buffer their output (batch mode)
-#
-#    These will take priority over any scripts you load, so a snippet in this
-#    section will make a script of the same command name invisible.
-#    e.g.
-#      commandsnippets:
-#        watch: devtool server --port=1234 --mode=DEBUG 2>logs/dbg
-#
-#      can be run with the command
-#          clog watch
-#    con
+
 snippets:
   git:
-    vcode: cat releases.yaml|grep version|head -1|grep -oE '[0-9]+\.[0-9]+\.[0-9]'
+    tag:
+      ref: yq -r '.[0].version' releases.yaml
+    message:
+      ref: yq -r '.[0].note' releases.yaml
+    suffix: b="$(git branch --show-current)";[[ "$b" == main ]]&&echo ""|||tr -d [:blank:]
   # --- project snippets:  clog project <snippet> ---------------------------
   # typically used for global tool version propagation, node version etc.
-  # project:
-  #   needs:
-  #     go-version: "1.23.0"
-  #     hugo-version: "0.136.0"
-  #     node-version: "21.7.0"
+  project:
+    config: |
+      export PROJECT=$(basename $(pwd))              # project you're building
+      # add a suffix to any build not on the main branch
+      export bSUFFIX="$(git branch --show-current)" && [[ "$bSUFFIX"=="main" ]] && bSUFFIX=""
+    needs:
+      go-version: echo "1.24.0"
+      hugo-version: echo "0.143.1"
 
-# #############################################################################
-#                 _
-#   _ _    __ _  (_)  _ _   __ __
-#  | ' \  / _` | | | | ' \  \ \ /
-#  |_||_| \__, | |_| |_||_| /_\_\
-#         |___/
-# #############################################################################
-# --- nginx installation configuration ----------------------------------------
-# these defaults correspond to the apt package defaults
-nginx:
-  configPath: embed
-  shellsnippets: []
-  folder:
-    available: /etc/nginx/sites-available/
-    enabled: /etc/nginx/sites-enabled/
-
-# #############################################################################
-#
-#   ___ __ __  __
-#  (_-< \ V / / _|
-#  /__/  \_/  \__|
-# #############################################################################
-# --- svc is a chi based website using cloglib/clogsvc ----------------------------
-svc:
-  configPath: embed
-  port: 11998
-  configFileName: server.config.yaml
-  # use the main env variable name unless overriden by the svc for web ops
-  env:
-    dbConnectionString: DB_CON_STR_CLOGSVC
-
-  db:
-    type: sqlite
-    #if no connection details specified then use env.dbConnectionString
-    defaultPageLimit: 20
-    defaultSort: CreatedAt
-  homeFolder: set-at-runtime
-  version:
-    short: "0.0.0"
-    long: 0.0.0-gitcommit
-
-  # webhook handling
-  # format: https://some-host.dns/a/hook/hookType/{source}/{project}/{semver}
-  # format: https://some-host.dns/a/hook/cicd/gitlab-deploy/$PROJECT/$vCODE
-  hookprefix: "/hook"
-  hooks:
-    # params for responding to /hook/website/{id}
-    - prefix: /website/staging/{id}
-      ruleName: Test staging website
-      something: Another property
-      somevalue: 600
-      somearray: [1, 2, 3, 4]
-# #############################################################################
+check:
+  pre-build:
+    before: eval "$(clog Inc)"
+    blocks:
+      - finally: clog Log -I "      branch $(clog git branch)"
+      - finally: clog Log -I "     tag-ref $(clog git tag ref)"
+      - finally: clog Log -I "    tag-head $(clog git tag head)"
+      - finally: clog Log -I "  tag-latest $(clog git tag latest)"
+      - finally: clog Log -I "  tag-origin $(clog git tag origin)"
+      - try: "[[ \"$(clog git tag head)\" != \"$(clog git tag ref)\" ]]"
+        pass:  clog Log -S "      tag-head == tag-ref"
+        catch: clog Log -W "      tag-head != tag-ref"
+      - try: "[[ \"$(clog git tag latest)\" != \"$(clog git tag ref)\" ]]"
+        pass:  clog Log -S "    tag-latest == tag-ref"
+        catch: clog Log -W "    tag-latest != tag-ref"
+      - try: "[[ \"$(clog git tag origin)\" != \"$(clog git tag ref)\" ]]"
+        pass:  clog Log -S "    tag-origin == tag-ref"
+        catch: clog Log -W "    tag-origin != tag-ref"
+      - try: "[[ \"$(clog git hash head)\" != \"$(clog git hash origin)\" ]]"
+        pass:  clog Log -S "     hash-head == hash-origin"
+        catch: clog Log -W "     hash-head != hash-origin"
+      - try: "[[ \"$(clog git message latest)\" != \"$(clog git message ref)\" ]]"
+        pass:  clog Log -S "message latest == message-ref"
+        catch: clog Log -W "message latest != message-ref"; \
+               clog Log -W "($(clog git message latest)) != ($(clog git message ref))"
+      - try: clog    git tree clean
+        ok:    clog Log -I "working tree clean"
+        catch: clog Log -E "working tree NOT clean"
+      - try: clog    git tree ahead
+        ok:    clog Log -E "working tree up to date with origin"
+        catch: clog Log -E "working tree is ahead of origin"
+      - try: clog   git tree behind
+        ok:    clog Log -E "working tree up to date with origin"
+        catch: clog Log -E "working tree is behind origin"
+      - try: clog git unstaged
+        ok:    clog Log -E "all changes staged"
+        catch: clog Log -E "unstaged changes in working tree"

@@ -1,7 +1,7 @@
 # opentsg codenames from https://www.mythical-creatures-and-beasts.com/
 ---
-
-- { version: "0.5.0", date: 2024-11-22, codename: Erymanthian,  note: HandlingAndBoxes }
+- { version: "0.6.0", date: 2024-11-22, codename: fenrir,       note: tsigs boxes coordinates }
+- { version: "0.5.0", date: 2024-11-22, codename: erymanthian,  note: HandlingAndBoxes }
 - { version: "0.4.1", date: 2023-12-05, codename: dragon,       note: camelCapsConsistency }
 - { version: "0.4.0", date: 2023-11-29, codename: dragon,       note: color space & text }
 - { version: "0.3.0", date: 2023-09-01, codename: camazotz,     note: internal testing release }
