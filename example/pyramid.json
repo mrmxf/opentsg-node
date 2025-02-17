@@ -1,10 +1,13 @@
 {
-    "type": "builtin.textbox",
-    "text": [""],
-    "font": "body",
-    "textColor": "#f2e2eb",
-    "borderColor": "#333333",
-    "backgroundColor": "#000000",
-    "borderSize": 0,
-    "grid": { "location": "a0" }
-  }
+  "props": {
+    "type": "builtin.textbox"
+  },
+  "text": [
+    ""
+  ],
+  "font": "body",
+  "textColor": "#f2e2eb",
+  "borderColor": "#333333",
+  "backgroundColor": "#000000",
+  "borderSize": 0
+}

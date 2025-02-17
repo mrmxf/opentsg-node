@@ -1,1 +1,0 @@
-These are the schema for the jsons to be used at the include factory. When updating them later on in the json, the "widget identifier" key is not used and therefore forbidden. There are no required properties either for these updates.

@@ -1,7 +1,0 @@
-{
-    "widget identifier": "addimage",
-        "image": "./recAssets/mmib-bot-22-1000-16bit.png",
-        "grid": {
-            "location": "key:green"
-        }
-}

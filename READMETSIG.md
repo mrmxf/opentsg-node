@@ -46,13 +46,13 @@ The only difference between this and the previous input json is
 
 the first input json (`tsig/gridexample.json`) had
 
-```json
+```javascript
 "canvas":{}
 ```
 
 which has been updated to.
 
-```json
+```javascript
 "canvas":{    
     "name": [
       "./tsig/example/ebuHouse.png"
@@ -130,10 +130,12 @@ instead of the default base units of the TSIG. e.g. 3 tiles that have the groups
 Will produce 2 TSIgs of A1 and A2.
 If every TSIG tile does not have the unit searched for than an error has returned.
 
-```json
+```javascript
+"props":{
  "TSIG": {
         "grouping":"example"
     }
+}  
 ```
 
 e.g.
@@ -141,6 +143,7 @@ e.g.
 ```json
 {
   "props": {
+    "type" : "builtin.example",
     "location" : {
       "box" : {
         "useGridKeys" : ["tsig:B1"]

@@ -23,7 +23,7 @@ jobs:
         run:  bash ./clogrc/build.sh
 
       - name: opentsg-node-rc build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: opentsg-node-rc-build
           path: tmp/*-opentsg*
@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Download all build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
